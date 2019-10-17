@@ -9,6 +9,7 @@ import { FigurecardComponent } from 'app/shared/figurecard/figurecard.component'
 import { ImagecardComponent } from 'app/shared/imagecard/imagecard.component';
 import { MatFormField } from '@angular/material/form-field';
 import { MsgIconBtnComponent } from 'app/shared/msgiconbtn/msgiconbtn.component';
+import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { ObserversModule } from '@angular/cdk/observers';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,7 @@ describe('HomeComponent', () => {
 					ImagecardComponent,
 					MsgIconBtnComponent
 				],
-				imports: [ MatMenuModule, ObserversModule, MatInputModule, BrowserAnimationsModule ]
+				imports: [ MatMenuModule, ObserversModule, MatInputModule, BrowserAnimationsModule, HttpClientModule ]
 			}).compileComponents();
 		})
 	);
