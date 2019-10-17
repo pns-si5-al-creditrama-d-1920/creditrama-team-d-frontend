@@ -33,45 +33,47 @@ import { PanelsComponent } from './dashboard/component/panels/panels.component';
 
 import { SettingsService } from './services/settings.service';
 import { WizardComponent } from './dashboard/component/wizard/wizard.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginService } from './services/login.service';
+import { BankService } from './services/bank.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidebarComponent,
-    HomeComponent,
-    ProfileComponent,
-    NavbarComponent,
-    FigurecardComponent,
-    ImagecardComponent,
-    TableComponent,
-    NotificationComponent,
-    MsgIconBtnComponent,
-    SweetAlertComponent,
-    LoginComponent,
-    RootComponent,
-    RegisterComponent,
-    LockComponent,
-    HeaderComponent,
-    FooterComponent,
-    SettingsComponent,
-    PriceTableComponent,
-    PanelsComponent,
-    WizardComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    routing,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatRadioModule,
-    MatInputModule,
-    MatMenuModule,
-    MatCheckboxModule
-  ],
-  providers: [SettingsService],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		SidebarComponent,
+		HomeComponent,
+		ProfileComponent,
+		NavbarComponent,
+		FigurecardComponent,
+		ImagecardComponent,
+		TableComponent,
+		NotificationComponent,
+		MsgIconBtnComponent,
+		SweetAlertComponent,
+		LoginComponent,
+		RootComponent,
+		RegisterComponent,
+		LockComponent,
+		HeaderComponent,
+		FooterComponent,
+		SettingsComponent,
+		PriceTableComponent,
+		PanelsComponent,
+		WizardComponent
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpClientModule,
+		routing,
+		BrowserAnimationsModule,
+		MatButtonModule,
+		MatRadioModule,
+		MatInputModule,
+		MatMenuModule,
+		MatCheckboxModule
+	],
+	providers: [ SettingsService, LoginService, BankService ],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
