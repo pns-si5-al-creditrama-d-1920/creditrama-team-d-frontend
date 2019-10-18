@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, OnInit, OnDestroy} from '@angular/core';
-import { SettingsService } from '../services/settings.service';
-import { ROUTES } from './sidebar-routes.config';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {SettingsService} from '../services/settings.service';
+import {ROUTES} from './sidebar-routes.config';
 
 @Component({
   selector: 'app-sidebar',

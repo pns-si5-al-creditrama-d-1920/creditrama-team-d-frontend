@@ -12,13 +12,13 @@
            <div class="form-row">
              <i class="material-icons">email</i>
              <mat-form-field color="accent">
-               <input type="text" matInput placeholder="Email address"/>
+               <input type="text" matInput placeholder="Email address" [(ngModel)]='username'/>
              </mat-form-field>
            </div>
            <div class="form-row">
              <i class="material-icons">lock_outline</i>
              <mat-form-field color="accent">
-               <input type="password" matInput placeholder="Password"/>
+               <input type="password" matInput placeholder="Password" [(ngModel)]='password'/>
              </mat-form-field>
            </div>
          </div>
