@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {BankService} from 'app/services/bank.service';
 import {Observable} from 'rxjs';
+import {BankAccount} from '../../shared/model/bank-account';
 import {OAuthService} from 'angular-oauth2-oidc';
-import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import {User} from '../../models/user';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +13,25 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  authUser: User;
 
-
-  constructor(private auth: OAuthService, private http: HttpClient) {
+  constructor(private auth: AuthService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+	// this.balance = this.accounts[0]['balance'];
+	this.route.data.subscribe(data => this.auth.getAuthUser().subscribe(v => {
+		console.log(v);
+		this.authUser = v;
+		}
+	));
   }
 
-  testApi() {
-    this.http.get('http://localhost:8080/profiles').subscribe(v => console.log(v));
+  /*async fetchData() {
+
+    }*/
+
+  show() {
+	console.log(this.authUser);
   }
 }

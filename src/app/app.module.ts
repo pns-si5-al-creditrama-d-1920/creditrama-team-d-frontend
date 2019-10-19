@@ -31,54 +31,55 @@ import {SettingsComponent} from './dashboard/settings/settings.component';
 import {PriceTableComponent} from './dashboard/component/pricetable/pricetable.component';
 import {PanelsComponent} from './dashboard/component/panels/panels.component';
 
-import {SettingsService} from './services/settings.service';
-import {WizardComponent} from './dashboard/component/wizard/wizard.component';
+import { SettingsService } from './services/settings.service';
+import { WizardComponent } from './dashboard/component/wizard/wizard.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { BankService } from './services/bank.service';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {TokenInterceptor} from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SidebarComponent,
-    HomeComponent,
-    ProfileComponent,
-    NavbarComponent,
-    FigurecardComponent,
-    ImagecardComponent,
-    TableComponent,
-    NotificationComponent,
-    MsgIconBtnComponent,
-    SweetAlertComponent,
-    LoginComponent,
-    RootComponent,
-    RegisterComponent,
-    LockComponent,
-    HeaderComponent,
-    FooterComponent,
-    SettingsComponent,
-    PriceTableComponent,
-    PanelsComponent,
-    WizardComponent
+	AppComponent,
+	SidebarComponent,
+	HomeComponent,
+	ProfileComponent,
+	NavbarComponent,
+	FigurecardComponent,
+	ImagecardComponent,
+	TableComponent,
+	NotificationComponent,
+	MsgIconBtnComponent,
+	SweetAlertComponent,
+	LoginComponent,
+	RootComponent,
+	RegisterComponent,
+	LockComponent,
+	HeaderComponent,
+	FooterComponent,
+	SettingsComponent,
+	PriceTableComponent,
+	PanelsComponent,
+	WizardComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    routing,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatRadioModule,
-    OAuthModule.forRoot(),
-    MatInputModule,
-    MatMenuModule,
-    MatCheckboxModule
+	BrowserModule,
+	FormsModule,
+	HttpClientModule,
+	routing,
+	BrowserAnimationsModule,
+	MatButtonModule,
+	MatRadioModule,
+	OAuthModule.forRoot(),
+	MatInputModule,
+	MatMenuModule,
+	MatCheckboxModule
   ],
   providers: [SettingsService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
+	provide: HTTP_INTERCEPTORS,
+	useClass: TokenInterceptor,
+	multi: true
+  }, BankService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

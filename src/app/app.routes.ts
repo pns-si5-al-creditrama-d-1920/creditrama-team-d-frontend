@@ -18,6 +18,7 @@ import {LockComponent} from './page/lock/lock.component';
 import {RegisterComponent} from './page/register/register.component';
 import {AuthGuardService} from './guards/auth.guard';
 import {LoginGuard} from './guards/login.guard';
+import {UserInfoResolver} from './resolvers/userinfo.resolver';
 
 const routes: Routes = [
   {
@@ -29,9 +30,13 @@ const routes: Routes = [
   {path: 'lock', component: LockComponent},
   {path: 'register', component: RegisterComponent},
   {
-    path: 'dashboard', component: RootComponent, children: [
-      {path: '', component: HomeComponent,
-        canActivate: [AuthGuardService]},
+    path: 'dashboard', component: RootComponent, resolve: {
+      user: UserInfoResolver  // on associe un resolver à la route
+    }, children: [
+      {
+        path: '', component: HomeComponent,
+        canActivate: [AuthGuardService]
+      },
       {path: 'profile', component: ProfileComponent},
       {path: 'table', component: TableComponent},
       {path: 'notification', component: NotificationComponent},

@@ -1,14 +1,14 @@
 <div class="container">
   <app-navbar title="Dashboard"></app-navbar>
-  <br>
-  <button (click)="testApi()">Click</button>
-  <h3>Bienvenue {{this.auth.getIdentityClaims()["principal"].username }}</h3>
+  <h3>Bienvenue {{this.authUser.username }}</h3>
+  <button (click)="show()">Click me</button>
   <div class="row" style="margin-top: 30px">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <app-figurecard
-        title="1 250€"
+        title= "{{this.authUser.bankAccounts[0].balance}}"
         headerIcon="money"
         category="Solde"
+        footContent={{mainAccount}}
         linearColor="linear-gradient(60deg, #ffa726, #fb8c00)"
         boxShadow="0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4)">
       </app-figurecard>
