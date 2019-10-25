@@ -1,0 +1,37 @@
+<div class="container">
+	<app-navbar title="Recipients"></app-navbar>
+	<div class="row" style="margin-top: 30px">
+	  <div class="col-md-8">
+		<div class="card">
+		  <div class="card-header">
+			<i class="material-icons">perm_identity</i>
+		  </div>
+		  <div class="card-content">
+			<h4 class="card-title">Manage recipients
+			  <small class="category">Add new recipients</small>
+			</h4>
+			  <div class="row">
+				<div class="col-md-6">
+					<input matInput type="number" placeholder="Recipient bank account" [(ngModel)]="newRecipient" value=0 name="newRecipient">
+				</div>
+			  </div>
+			  <div class="row action-btn">
+				<button (click)="updateRecipients()" class="btn btn-rose">Update Recipients</button>
+			  </div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-md-4">
+		<div class="card right-profile">
+			<div class="card-content">
+				<h4>Current recipients</h4>
+				<div *ngFor="let recipient of currentRecipients">
+					<li>
+						{{recipient.bankAccountId}}
+					</li>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+  </div>  

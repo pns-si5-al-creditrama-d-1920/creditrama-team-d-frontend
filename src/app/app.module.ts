@@ -37,6 +37,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BankService } from './services/bank.service';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {TokenInterceptor} from './interceptors/token.interceptor';
+import { RecipientsComponent } from './dashboard/recipients/recipients.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {TokenInterceptor} from './interceptors/token.interceptor';
 	SettingsComponent,
 	PriceTableComponent,
 	PanelsComponent,
-	WizardComponent
+	WizardComponent,
+	RecipientsComponent
   ],
   imports: [
 	BrowserModule,
