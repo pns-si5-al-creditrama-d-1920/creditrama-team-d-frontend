@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URL_SERVER } from '../shared/constants/urls';
 import { Observable } from 'rxjs';
 import { BankAccount } from 'app/shared/model/bank-account';
+import { BankTransaction } from 'app/shared/model/bank-transaction';
 
 @Injectable({
 	providedIn: 'root'
@@ -20,12 +21,11 @@ export class BankService {
 		console.log('updateRecipients service');
 		console.log(userId);
 		console.log(newRecipient);
-		let recipientBankAccount = new BankAccount();
-		recipientBankAccount.bankAccountId = newRecipient;
-		console.log(recipientBankAccount);
 		console.log(URL_SERVER + this.route + '/' + 'clients/' + userId + '/recipients');
-		return this.http.post(URL_SERVER + this.route + '/' + 'clients/' + userId + '/recipients', {
-			bankAccountId: newRecipient
-		});
+		return this.http.post(URL_SERVER + this.route + '/' + 'clients/' + userId + '/recipients', newRecipient);
+	}
+
+	transfer(userId: number, transaction: BankTransaction) {
+		return this.http.post(URL_SERVER + this.route + '/clients/' + userId + '/transactions', transaction);
 	}
 }

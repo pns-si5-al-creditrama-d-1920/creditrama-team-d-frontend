@@ -20,6 +20,7 @@ import { AuthGuardService } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { UserInfoResolver } from './resolvers/userinfo.resolver';
 import { RecipientsComponent } from './dashboard/recipients/recipients.component';
+import { TransferComponent } from './dashboard/transfer/transfer.component';
 
 const routes: Routes = [
 	{
@@ -50,7 +51,8 @@ const routes: Routes = [
 			{ path: 'components/price-table', component: PriceTableComponent },
 			{ path: 'components/panels', component: PanelsComponent },
 			{ path: 'components/wizard', component: WizardComponent },
-			{ path: 'recipients', component: RecipientsComponent }
+			{ path: 'recipients', component: RecipientsComponent },
+			{ path: 'transfer', component: TransferComponent }
 		]
 	}
 ];

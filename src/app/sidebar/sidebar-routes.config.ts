@@ -1,6 +1,7 @@
 export const ROUTES = [
 	{ path: '/dashboard', title: 'Dashboard', icon: 'dashboard', children: null },
 	{ path: 'recipients', title: 'Recipients', icon: 'contacts', children: null },
+	{ path: 'transfer', title: 'Transfer', icon: 'swap_horiz', children: null },
 	{ path: 'profile', title: 'User Profile', icon: 'person', children: null },
 	{ path: 'table', title: 'Table List', icon: 'content_paste', children: null },
 	{

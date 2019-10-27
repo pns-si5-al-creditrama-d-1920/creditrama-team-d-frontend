@@ -38,6 +38,7 @@ import { BankService } from './services/bank.service';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {TokenInterceptor} from './interceptors/token.interceptor';
 import { RecipientsComponent } from './dashboard/recipients/recipients.component';
+import { TransferComponent } from './dashboard/transfer/transfer.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { RecipientsComponent } from './dashboard/recipients/recipients.component
 	PriceTableComponent,
 	PanelsComponent,
 	WizardComponent,
-	RecipientsComponent
+	RecipientsComponent,
+	TransferComponent
   ],
   imports: [
 	BrowserModule,
