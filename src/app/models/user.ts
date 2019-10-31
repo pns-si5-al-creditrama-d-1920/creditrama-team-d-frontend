@@ -1,4 +1,5 @@
 import { BankAccount } from '../shared/model/bank-account';
+import { BankTransaction } from 'app/shared/model/bank-transaction';
 
 export interface User {
 	userId: number;
@@ -6,4 +7,5 @@ export interface User {
 	password: string;
 	bankAccounts: BankAccount[];
 	recipients: number[];
+	transactions: BankTransaction[];
 }

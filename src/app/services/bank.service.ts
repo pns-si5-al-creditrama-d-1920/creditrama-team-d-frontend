@@ -28,4 +28,8 @@ export class BankService {
 	transfer(userId: number, transaction: BankTransaction) {
 		return this.http.post(URL_SERVER + this.route + '/clients/' + userId + '/transactions', transaction);
 	}
+
+	dump() {
+		return this.http.get(URL_SERVER + '/dump');
+	}
 }

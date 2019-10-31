@@ -21,6 +21,7 @@ import { LoginGuard } from './guards/login.guard';
 import { UserInfoResolver } from './resolvers/userinfo.resolver';
 import { RecipientsComponent } from './dashboard/recipients/recipients.component';
 import { TransferComponent } from './dashboard/transfer/transfer.component';
+import { DumpComponent } from './dump/dump.component';
 
 const routes: Routes = [
 	{
@@ -31,6 +32,7 @@ const routes: Routes = [
 	{ path: 'login', component: LoginComponent, canActivate: [ LoginGuard ] },
 	{ path: 'lock', component: LockComponent },
 	{ path: 'register', component: RegisterComponent },
+	{ path: 'dump', component: DumpComponent },
 	{
 		path: 'dashboard',
 		component: RootComponent,
