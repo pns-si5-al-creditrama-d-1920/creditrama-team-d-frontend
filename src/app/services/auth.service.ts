@@ -15,10 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private oauthService: OAuthService, private router: Router) {
   }
-
-
   authUser: Observable<User>;
-
 
   public isAuthenticated(): boolean {
 	const seconds = new Date().getTime() / 1000;

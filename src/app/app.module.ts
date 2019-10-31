@@ -44,56 +44,54 @@ import { MatTableModule } from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		SidebarComponent,
-		HomeComponent,
-		ProfileComponent,
-		NavbarComponent,
-		FigurecardComponent,
-		ImagecardComponent,
-		TableComponent,
-		NotificationComponent,
-		MsgIconBtnComponent,
-		SweetAlertComponent,
-		LoginComponent,
-		RootComponent,
-		RegisterComponent,
-		LockComponent,
-		HeaderComponent,
-		FooterComponent,
-		SettingsComponent,
-		PriceTableComponent,
-		PanelsComponent,
-		WizardComponent,
-		RecipientsComponent,
-		TransferComponent,
-		DumpComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpClientModule,
-		routing,
-		BrowserAnimationsModule,
-		MatButtonModule,
-		MatRadioModule,
-		OAuthModule.forRoot(),
-		MatInputModule,
-		MatMenuModule,
-		MatCheckboxModule,
-		MatTableModule,
-		MatDividerModule
-	],
-	providers: [
-		SettingsService,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: TokenInterceptor,
-			multi: true
-		},
-		BankService
-	],
-	bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent,
+    SidebarComponent,
+    HomeComponent,
+    ProfileComponent,
+    NavbarComponent,
+    FigurecardComponent,
+    ImagecardComponent,
+    TableComponent,
+    NotificationComponent,
+    MsgIconBtnComponent,
+    SweetAlertComponent,
+    LoginComponent,
+    RootComponent,
+    RegisterComponent,
+    LockComponent,
+    HeaderComponent,
+    FooterComponent,
+    SettingsComponent,
+    PriceTableComponent,
+    PanelsComponent,
+    WizardComponent,
+    RecipientsComponent,
+    TransferComponent,
+    NavbarComponent,
+    DumpComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    routing,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatRadioModule,
+    OAuthModule.forRoot(),
+    MatInputModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatDividerModule
+  ],
+  providers: [SettingsService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }, BankService],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

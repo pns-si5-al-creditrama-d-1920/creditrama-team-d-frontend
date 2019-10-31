@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { URL_SERVER } from '../shared/constants/urls';
 import { Observable } from 'rxjs';
-import { BankAccount } from 'app/shared/model/bank-account';
 import { BankTransaction } from 'app/shared/model/bank-transaction';
 
 @Injectable({
