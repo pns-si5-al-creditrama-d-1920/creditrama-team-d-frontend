@@ -1,47 +1,61 @@
-import { Component, OnInit } from '@angular/core';
-import { BankAccount } from 'app/shared/model/bank-account';
-import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { BankService } from 'app/services/bank.service';
-import { User } from '../../models/user';
-import { BankTransaction } from 'app/shared/model/bank-transaction';
+import {Component, OnInit} from '@angular/core';
+import {BankAccount} from 'app/shared/model/bank-account';
+import {ActivatedRoute} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
+import {BankService} from 'app/services/bank.service';
+import {User} from '../../models/user';
+import {BankTransaction} from 'app/shared/model/bank-transaction';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-	selector: 'app-transfer',
-	templateUrl: './transfer.component.html',
-	styleUrls: [ './transfer.component.css' ]
+  selector: 'app-transfer',
+  templateUrl: './transfer.component.html',
+  styleUrls: ['./transfer.component.css']
 })
 export class TransferComponent implements OnInit {
-	authUser: User;
-	myAccounts: BankAccount[];
-	myRecipients: number[];
-	transferAmount: number;
-	selectedAccount: number;
-	selectedRecipient: number;
+  authUser: User;
+  myAccounts: BankAccount[];
+  myRecipients: number[];
+  transferAmount: number;
+  selectedAccount: number;
+  selectedRecipient: number;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  transaction: BankTransaction = new BankTransaction();
 
-	constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: BankService) {}
+  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: BankService, private _formBuilder: FormBuilder) {
+  }
 
-	ngOnInit() {
-		this.route.data.subscribe((data) =>
-			this.auth.getAuthUser().subscribe((v) => {
-				this.authUser = v;
-				this.myRecipients = this.authUser.recipients;
-				this.myAccounts = this.authUser.bankAccounts;
-			})
-		);
-	}
 
-	transfer() {
-		let transaction = new BankTransaction();
-		transaction.amount = this.transferAmount;
-		transaction.sourceId = this.selectedAccount;
-		transaction.destinationId = this.selectedRecipient;
-		if (
-			this.myAccounts.find(
-				(account) => account.bankAccountId == this.selectedAccount && account.balance >= this.transferAmount
-			) != null
-		) {
-			this.bankService.transfer(this.authUser.userId, transaction).subscribe((response) => console.log(response));
-		}
-	}
+  ngOnInit() {
+    this.auth.authUser.subscribe((v) => {
+      console.log(v);
+      this.authUser = v;
+      console.log(this.authUser.recipients);
+      this.myRecipients = this.authUser.recipients;
+      this.myAccounts = this.authUser.bankAccounts;
+    });
+
+    this.firstFormGroup = this._formBuilder.group({
+      sourceId: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      destinationId: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      amount: ['', Validators.required]
+    });
+  }
+
+  transfer() {
+    console.log(this.thirdFormGroup.getRawValue());
+    this.transaction.amount = this.thirdFormGroup.getRawValue().amount;
+    this.transaction.sourceId = this.firstFormGroup.getRawValue().sourceId;
+    this.transaction.destinationId = this.secondFormGroup.getRawValue().destinationId;
+
+    console.log(this.transaction);
+    this.bankService.transfer(this.authUser.userId, this.transaction).subscribe((response) => console.log(response));
+    this.auth.getAuthUser(true);
+  }
 }

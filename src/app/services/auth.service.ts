@@ -36,8 +36,8 @@ export class AuthService {
 
   }
 
-  public getAuthUser(): Observable<User> {
-	if (!this.authUser) {
+  public getAuthUser(act: boolean = false): Observable<User> {
+	if (!this.authUser || act) {
 	  console.log(environment.BANK_SERVICE_URL);
 		this.authUser = this.http.get<User>(environment.BANK_SERVICE_URL + 'clients/auth').pipe(
 		publishReplay(1), // this tells Rx to cache the latest emitted

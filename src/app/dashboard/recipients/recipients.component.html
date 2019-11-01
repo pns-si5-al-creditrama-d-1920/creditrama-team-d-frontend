@@ -11,9 +11,12 @@
 			  <small class="category">Add new recipients</small>
 			</h4>
 			  <div class="row">
-				<div class="col-md-6">
-					<input matInput type="number" placeholder="Recipient bank account" [(ngModel)]="newRecipient" value=0 name="newRecipient">
-				</div>
+
+          <form style="width: 80%; margin-left: 5%">
+            <mat-form-field style="width: 80%">
+              <input matInput type="number" placeholder="Recipient bank account" [(ngModel)]="newRecipient" value=0 name="newRecipient">
+            </mat-form-field>
+          </form>
 			  </div>
 			  <div class="row action-btn">
 				<button (click)="updateRecipients()" class="btn btn-rose">Update Recipients</button>
@@ -25,13 +28,12 @@
 		<div class="card right-profile">
 			<div class="card-content">
 				<h4>Current recipients</h4>
-				<div *ngFor="let recipient of currentRecipients">
-					<li>
-						{{recipient}}
-					</li>
-				</div>
+        <mat-list>
+          <mat-list-item *ngFor="let recipient of currentRecipients">{{recipient}}
+          </mat-list-item>
+        </mat-list>
 			</div>
 		</div>
 	  </div>
 	</div>
-  </div>  
+  </div>
