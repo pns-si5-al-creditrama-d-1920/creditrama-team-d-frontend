@@ -6,6 +6,7 @@ import {BankService} from 'app/services/bank.service';
 import {User} from '../../models/user';
 import {BankTransaction} from 'app/shared/model/bank-transaction';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-transfer',
@@ -24,7 +25,7 @@ export class TransferComponent implements OnInit {
   thirdFormGroup: FormGroup;
   transaction: BankTransaction = new BankTransaction();
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: BankService, private _formBuilder: FormBuilder) {
+  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: BankService, private _formBuilder: FormBuilder, private userService: UserService) {
   }
 
 
@@ -44,7 +45,8 @@ export class TransferComponent implements OnInit {
       destinationId: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      amount: ['', Validators.required]
+      amount: [0, Validators.compose(
+        [Validators.min(1), Validators.required])]
     });
   }
 
@@ -58,4 +60,5 @@ export class TransferComponent implements OnInit {
     this.bankService.transfer(this.authUser.userId, this.transaction).subscribe((response) => console.log(response));
     this.auth.getAuthUser(true);
   }
+
 }

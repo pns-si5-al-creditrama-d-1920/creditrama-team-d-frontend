@@ -5,7 +5,7 @@
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <app-figurecard
         *ngIf="this.authUser"
-        title= "{{this.authUser.bankAccounts[0].balance}}"
+        title= "{{this.authUser.bankAccounts[0].balance}}€"
         headerIcon="money"
         category="Solde"
         footContent="Numéro de compte : {{mainAccount}}"
@@ -15,15 +15,16 @@
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <app-figurecard
-        title="-15€"
+        title="{{lastTransaction}}€"
         headerIcon="equalizer"
-        category="Dernier retrait"
+        category="Dernière transaction"
         footContent="Google Analytics"
         footerIcon="local_offer"
         linearColor="linear-gradient(60deg, #ef5350, #e53935)"
         boxShadow="0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4)">
       </app-figurecard>
     </div>
+    <!--
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <app-figurecard
         title="$3,245"
@@ -35,6 +36,7 @@
         boxShadow="0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4)">
       </app-figurecard>
     </div>
+    -->
   </div>
   <div class="row" style="margin-top: 10px">
     <div class="col-md-4 col-sm-12 col-xs-12">

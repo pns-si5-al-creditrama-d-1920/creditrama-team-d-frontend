@@ -50,14 +50,14 @@
                   <input matInput placeholder="Montant"  type="number" formControlName="amount" value=0 required>
                 </mat-form-field>
                 <div>
-                  <button mat-button matStepperNext>Next</button>
+                  <button mat-button  matStepperNext>Next</button>
                 </div>
               </form>
             </mat-step>
 
             <mat-step>
               <ng-template matStepLabel>Récapitulatif</ng-template>
-              You are now done.
+              <h3> Montant : {{this.thirdFormGroup.getRawValue().amount}}</h3>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="transfer()" class="btn btn-rose">Finish</button>

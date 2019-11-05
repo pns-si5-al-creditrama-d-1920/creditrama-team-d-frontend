@@ -44,6 +44,7 @@ import {DumpComponent} from './dump/dump.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule, MatSelectModule} from '@angular/material';
+import {UserService} from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -95,7 +96,7 @@ import {MatListModule, MatSelectModule} from '@angular/material';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }, BankService],
+  }, BankService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
