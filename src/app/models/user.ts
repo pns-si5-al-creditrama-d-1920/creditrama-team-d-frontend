@@ -8,5 +8,5 @@ export interface User {
   email: string;
   bankAccounts: BankAccount[];
   recipients: number[];
-  transactions: BankTransaction[];
+  bankTransactions: BankTransaction[];
 }
