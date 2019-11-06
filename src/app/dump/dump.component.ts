@@ -13,6 +13,7 @@ export class DumpComponent implements OnInit {
 		'userId',
 		'username',
 		'bankAccount',
+    'bankAccount.balance',
 		'recipient',
 		'transaction.sourceId',
 		'transaction.destinationId',
