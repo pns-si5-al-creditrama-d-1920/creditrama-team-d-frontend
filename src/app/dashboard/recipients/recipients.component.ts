@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {BankService} from 'app/services/bank.service';
-import {User} from "../../models/user";
+import {User} from '../../models/user';
+import { SweetAlertComponent } from '../sweetalert/sweetalert.component';
+
+declare const swal: any;
 
 @Component({
   selector: 'app-recipients',
@@ -27,13 +30,24 @@ export class RecipientsComponent implements OnInit {
   updateRecipients() {
 	console.log('update recipients TS');
 	if (!this.currentRecipients.includes(this.newRecipient)) {
-		// this.currentRecipients.push(this.newRecipient);
 		this.auth.authUser.subscribe(v => {
 		this.bankService
 			.updateRecipients(v.userId, this.newRecipient)
-			.subscribe((response) => console.log(response));
+			.subscribe(
+			  (response) => this.currentRecipients.push(this.newRecipient),
+        (error => swal({
+          title: 'Error',
+          text: 'This bank account doesn\'t exist',
+          confirmButtonClass: 'btn btn-danger'
+        })));
 		});
     this.auth.getAuthUser(true);
-	}
+	} else {
+    swal({
+      title: 'Error',
+      text: 'This bank account is already one of your recipients',
+      confirmButtonClass: 'btn btn-danger'
+    });
+  }
 }
 }
