@@ -14,6 +14,7 @@ export class AppComponent {
     this.oauthService.oidc = false;
     // Login-Url
     this.oauthService.tokenEndpoint = environment.AUTH_SERVER + 'oauth/token';
+      this.oauthService.requireHttps = false;
 
     // Url with user info endpoint
     // This endpont is described by OIDC and provides data about the loggin user
