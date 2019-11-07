@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
 		console.log(v);
 		this.authUser = v;
 		this.mainAccount = this.authUser.bankAccounts[0].bankAccountId;
-		let lastTransac: BankTransaction = {id: -1, destinationId: -1, sourceId: -1, amount: 0};
-		this.authUser.transactions.forEach(v => {
-			if (v.id > lastTransac.id) {
+		let lastTransac: BankTransaction = {bankTransactionId: -1, destinationId: -1, sourceId: -1, amount: 0};
+		this.authUser.bankTransactions.forEach(v => {
+			if (v.bankTransactionId > lastTransac.bankTransactionId) {
 			lastTransac = v;
 			}
 		});
@@ -37,9 +37,5 @@ export class HomeComponent implements OnInit {
 		}
 		})
 	);
-  }
-
-  show() {
-	console.log(this.authUser);
   }
 }

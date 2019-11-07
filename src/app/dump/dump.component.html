@@ -11,10 +11,25 @@
 			<td mat-cell *matCellDef="let element"> {{element.username}} </td>
 		</ng-container>
 
-		<ng-container matColumnDef="bankAccount">
-			<th mat-header-cell *matHeaderCellDef> Bank accounts </th>
-			<td mat-cell *matCellDef="let element"> {{element.bankAccounts[0].bankAccountId}} </td>
-		</ng-container>
+    <ng-container matColumnDef="bankAccount">
+      <th mat-header-cell *matHeaderCellDef> Bank accounts </th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngFor="let bankaccount of element.bankAccounts">
+					{{bankaccount.bankAccountId}} <br/>
+					<mat-divider></mat-divider>
+				</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bankAccount.balance">
+      <th mat-header-cell *matHeaderCellDef> Bank account balances</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngFor="let bankaccount of element.bankAccounts">
+					{{bankaccount.balance}} <br/>
+					<mat-divider></mat-divider>
+				</span>
+      </td>
+    </ng-container>
 
 		<ng-container matColumnDef="recipient">
 			<th mat-header-cell *matHeaderCellDef> Recipients </th>
@@ -24,7 +39,7 @@
 		<ng-container matColumnDef="transaction.sourceId">
 			<th mat-header-cell *matHeaderCellDef> Transaction source </th>
 			<td mat-cell *matCellDef="let element">
-				<span *ngFor="let transac of element.transactions"> 
+				<span *ngFor="let transac of element.bankTransactions">
 					{{transac.sourceId}} <br/>
 					<mat-divider></mat-divider>
 				</span>
@@ -34,7 +49,7 @@
 		<ng-container matColumnDef="transaction.destinationId">
 			<th mat-header-cell *matHeaderCellDef> Transaction destination </th>
 			<td mat-cell *matCellDef="let element">
-				<span *ngFor="let transac of element.transactions"> 
+				<span *ngFor="let transac of element.bankTransactions">
 					{{transac.destinationId}} <br/>
 					<mat-divider></mat-divider>
 				</span>
@@ -44,7 +59,7 @@
 		<ng-container matColumnDef="transaction.amount">
 			<th mat-header-cell *matHeaderCellDef> Transaction amount </th>
 			<td mat-cell *matCellDef="let element">
-				<span *ngFor="let transac of element.transactions"> 
+				<span *ngFor="let transac of element.bankTransactions">
 					{{transac.amount}} <br/>
 					<mat-divider></mat-divider>
 				</span>
