@@ -42,6 +42,7 @@
         image="../../../assets/img/card.png"
         title="Carte de crédit"
         desc="Gérer ma carte de crédit"
+        *ngIf="this.authUser"
         footerTitle="{{this.authUser.bankAccounts[0].balance}}€"
         position="Carte de crédit">
       </app-imagecard>

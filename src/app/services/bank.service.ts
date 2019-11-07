@@ -3,18 +3,16 @@ import {HttpClient} from '@angular/common/http';
 import {URL_SERVER} from '../shared/constants/urls';
 import {Observable} from 'rxjs';
 import {BankTransaction} from 'app/shared/model/bank-transaction';
-import {User} from "../models/user";
+import {User} from '../models/user';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BankService {
   private route = '/bank';
 
   constructor(private http: HttpClient) {
   }
 
-  getBankAccount(userId: number): Observable<any> {
+  getBankAccounts(userId: number): Observable<any> {
     return this.http.get(URL_SERVER + this.route + '/clients/' + userId + '/bank-accounts');
   }
 
@@ -34,18 +32,22 @@ export class BankService {
     return this.http.post(URL_SERVER + this.route + '/clients/' + userId + '/transactions', transaction);
   }
 
-  register(userName: string, userMail: string, userPassword: string) {
-    return this.http.post(URL_SERVER + '/register', JSON.stringify({
-      id: 0,
-      username: userName,
+  registerWithBankAccount(userName: string, userMail: string, userPassword: string) {
+    this.register(userName, userMail, userPassword).subscribe((u: User) => {
+      console.info('par ici', u.username);
+      this.addBankAccount(u.userId, 100);
+    })
+  }
+
+  register(userName: string, userMail: string, userPassword: string): Observable<any> {
+    return this.http.post(URL_SERVER + '/register', {
       email: userMail,
-      password: userPassword
-    })).subscribe((user: User) => {
-      this.addBankAccount(user.userId, 100);
+      password: userPassword,
+      username: userName
     });
   }
 
-  dump() {
+  dump(): Observable<any> {
     return this.http.get(URL_SERVER + '/dump');
   }
 }
