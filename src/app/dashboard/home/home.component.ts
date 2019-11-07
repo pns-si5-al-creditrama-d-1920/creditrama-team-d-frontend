@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit {
 			}
 		});
 		if (this.authUser.userId === lastTransac.destinationId) {
-			this.lastTransaction = '+' + lastTransac.amount;
+			this.lastTransaction = '+' + lastTransac.amount + '€';
 		} else {
-			this.lastTransaction = '-' + lastTransac.amount;
+			this.lastTransaction = '-' + lastTransac.amount + '€';
 		}
 		})
 	);

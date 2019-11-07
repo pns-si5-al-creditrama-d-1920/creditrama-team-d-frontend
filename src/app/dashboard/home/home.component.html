@@ -15,7 +15,7 @@
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <app-figurecard
-        title="{{lastTransaction}}€"
+        title="{{lastTransaction}}"
         headerIcon="equalizer"
         category="Dernière transaction"
         footContent="Google Analytics"
@@ -44,7 +44,7 @@
         image="../../../assets/img/card.png"
         title="Carte de crédit"
         desc="Gérer ma carte de crédit"
-        footerTitle="1 250€"
+        footerTitle="{{this.authUser.bankAccounts[0].balance}}"
         position="Barcelona, Spain">
       </app-imagecard>
     </div>
