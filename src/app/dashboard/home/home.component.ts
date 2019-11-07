@@ -25,14 +25,14 @@ export class HomeComponent implements OnInit {
 		this.authUser = v;
 		this.mainAccount = this.authUser.bankAccounts[0].bankAccountId;
 		let lastTransac: BankTransaction = {bankTransactionId: -1, destinationId: -1, sourceId: -1, amount: 0};
-		this.authUser.bankTransactions.forEach(v => {
-			if (v.bankTransactionId > lastTransac.bankTransactionId) {
-			lastTransac = v;
+		this.authUser.bankTransactions.forEach(trans => {
+			if (trans.bankTransactionId > lastTransac.bankTransactionId) {
+			lastTransac = trans;
 			}
 		});
 		if (this.authUser.userId === lastTransac.destinationId) {
 			this.lastTransaction = '+' + lastTransac.amount + '€';
-		} else {
+		} else if (lastTransac.destinationId !== -1) {
 			this.lastTransaction = '-' + lastTransac.amount + '€';
 		}
 		})
