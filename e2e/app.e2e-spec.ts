@@ -1,4 +1,4 @@
-import { Angular2MaterialDashboardProPage } from './app.po';
+import {Angular2MaterialDashboardProPage} from './app.po';
 
 describe('angular2-material-dashboard-pro App', () => {
   let page: Angular2MaterialDashboardProPage;

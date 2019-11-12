@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SettingsService } from '../../services/settings.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {SettingsService} from '../../services/settings.service';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,99 @@
+<div class="container">
+  <app-navbar title="Transfer"></app-navbar>
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="material-icons">attach_money</i>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">New transfer</h4>
+
+          <mat-horizontal-stepper [linear]=true #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Choissisez votre compte en banque</ng-template>
+                <mat-form-field>
+                  <mat-label>Quel est le compte a débiter ?</mat-label>
+                  <mat-select [(value)]="selectedAccount" required formControlName="sourceId">
+                    <mat-option *ngFor="let account of myAccounts" [value]="account.bankAccountId">
+                      {{account.bankAccountId}} - {{account.balance}}€
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Choissisez le compte bénéficiaire</ng-template>
+                <mat-form-field>
+                  <mat-label>Quel est le compte a créditer ?</mat-label>
+                  <mat-select [(value)]="selectedRecipient" required formControlName="destinationId">
+                    <mat-option *ngFor="let recp of myRecipients" [value]="recp">
+                      {{recp}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="thirdFormGroup">
+              <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Somme</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Montant"  type="number" formControlName="amount" value=0 required>
+                </mat-form-field>
+                <div>
+                  <button mat-button  matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Récapitulatif</ng-template>
+              <h3> Montant : {{this.thirdFormGroup.getRawValue().amount}}</h3>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="transfer()" class="btn btn-rose">Finish</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+
+          <!-- <div class="row">
+            <div class="col-md-6">
+              <label>My accounts:</label>
+              <mat-select [(ngModel)]="selectedAccount" title="My accounts">
+                <option *ngFor="let account of myAccounts">
+                  {{account.bankAccountId}}
+                </option>
+              </mat-select>
+            </div>
+            <div class="col-md-6">
+              <label>My recipients:</label>
+              <select [(ngModel)]="selectedRecipient" title="My recipients">
+                <option *ngFor="let recipient of myRecipients">
+                  {{recipient}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <input matInput type="number" placeholder="Transfer amount" [(ngModel)]="transferAmount" value=0
+                     name="transferAmount">
+            </div>
+          </div>
+          <div class="row action-btn">
+            <button (click)="transfer()" class="btn btn-rose">Transfer</button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
