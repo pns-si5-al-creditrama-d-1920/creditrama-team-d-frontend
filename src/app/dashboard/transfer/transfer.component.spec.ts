@@ -1,7 +1,3 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TransferComponent } from './transfer.component';
-import {NavbarComponent} from "../../shared/navbar/navbar.component";
 /*
 describe('TransferComponent', () => {
   let component: TransferComponent;

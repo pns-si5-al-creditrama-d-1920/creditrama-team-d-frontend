@@ -1,6 +1,5 @@
-export class BankTransaction {
+export interface BankTransactionRequest {
   sourceId: number;
   destinationId: number;
   amount: number;
-  bankTransactionId: number;
 }

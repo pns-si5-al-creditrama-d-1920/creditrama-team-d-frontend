@@ -9,6 +9,7 @@ import {SettingsService} from '../../services/settings.service';
 export class RootComponent implements OnInit, OnDestroy {
   public id: number;
   public backgroundColor: string;
+
   constructor(public settingService: SettingsService) {
     this.id = settingService.getSidebarImageIndex() + 1;
     this.backgroundColor = settingService.getSidebarColor();

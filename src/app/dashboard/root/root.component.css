@@ -7,7 +7,7 @@
   flex: 1;
 }
 
-.sidebar-panel{
+.sidebar-panel {
   width: 260px;
   position: fixed;
   height: 100%;
@@ -20,13 +20,13 @@
   transition: all 500ms;
 }
 
-.main-panel{
+.main-panel {
   width: 100%;
   flex: 1;
   padding-left: 260px;
 }
 
-.sidebar-background{
+.sidebar-background {
   position: absolute;
   z-index: 0;
   height: 100%;

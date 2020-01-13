@@ -1,25 +1,25 @@
 <div class="container">
   <app-navbar title="Dashboard"></app-navbar>
-  <h3 *ngIf="this.authUser">Bienvenue {{this.authUser.username || ""}}</h3>
+  <h3 *ngIf="this.authUser">Bienvenue {{this.authUser.user.username || ""}}</h3>
   <div class="row" style="margin-top: 30px">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <app-figurecard
         *ngIf="this.authUser"
-        title= "{{this.authUser.bankAccounts[0].balance}}€"
-        headerIcon="money"
+        boxShadow="0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4)"
         category="Solde"
-        footContent="Numéro de compte : {{mainAccount}}"
+        footContent="Numéro de compte : {{this.authUser.bankAccounts[0].accountNumber}}"
+        headerIcon="money"
         linearColor="linear-gradient(60deg, #ffa726, #fb8c00)"
-        boxShadow="0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4)">
+        title="{{this.authUser.bankAccounts[0].balance}}€">
       </app-figurecard>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <app-figurecard
-        title="{{lastTransaction}}"
-        headerIcon="equalizer"
+        boxShadow="0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4)"
         category="Dernière transaction"
+        headerIcon="equalizer"
         linearColor="linear-gradient(60deg, #ef5350, #e53935)"
-        boxShadow="0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4)">
+        title="{{lastTransaction}}">
       </app-figurecard>
     </div>
     <!--
@@ -39,12 +39,12 @@
   <div class="row" style="margin-top: 10px">
     <div class="col-md-4 col-sm-12 col-xs-12">
       <app-imagecard
-        image="../../../assets/img/card.png"
-        title="Carte de crédit"
-        desc="Gérer ma carte de crédit"
         *ngIf="this.authUser"
+        desc="Gérer ma carte de crédit"
         footerTitle="{{this.authUser.bankAccounts[0].balance}}€"
-        position="Carte de crédit">
+        image="../../../assets/img/card.png"
+        position="Carte de crédit"
+        title="Carte de crédit">
       </app-imagecard>
     </div>
   </div>

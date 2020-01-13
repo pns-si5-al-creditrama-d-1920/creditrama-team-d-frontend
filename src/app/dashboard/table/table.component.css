@@ -1,8 +1,8 @@
-.row{
+.row {
   margin-top: 10px;
 }
 
-.card{
+.card {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -29,10 +29,10 @@
   color: #fff;
 }
 
-.card-content{
+.card-content {
   position: relative;
 }
 
-.card-title{
+.card-title {
   padding-left: 80px;
 }

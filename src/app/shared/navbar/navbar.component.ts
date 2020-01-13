@@ -7,7 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   @Input() title: string;
-  constructor() {}
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
@@ -15,6 +17,6 @@ export class NavbarComponent implements OnInit {
   menuClick() {
 
     // console.log('Salut')
-  // document.getElementById('main-panel').style.marginLeft = '260px';
+    // document.getElementById('main-panel').style.marginLeft = '260px';
   }
 }

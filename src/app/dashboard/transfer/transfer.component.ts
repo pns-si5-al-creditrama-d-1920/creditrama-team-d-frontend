@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {BankAccount} from 'app/shared/model/bank-account';
+import {BankAccount} from 'app/models/bank-account';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
-import {BankService} from 'app/services/bank.service';
+import {ClientService} from 'app/services/client.service';
 import {User} from '../../models/user';
-import {BankTransaction} from 'app/shared/model/bank-transaction';
+import {BankTransaction} from 'app/models/bank-transaction';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {AuthUser} from '../../models/auth-user';
+import {BankTransactionRequest} from '../../models/bank-transaction-request';
 
 @Component({
   selector: 'app-transfer',
@@ -16,26 +18,25 @@ import {UserService} from '../../services/user.service';
 export class TransferComponent implements OnInit {
   authUser: User;
   myAccounts: BankAccount[];
-  myRecipients: number[];
+  myRecipients: BankAccount[];
   transferAmount: number;
   selectedAccount: number;
   selectedRecipient: number;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
-  transaction: BankTransaction = new BankTransaction();
+  transaction: BankTransactionRequest;
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: BankService, private _formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: ClientService, private _formBuilder: FormBuilder, private userService: UserService) {
   }
 
 
   ngOnInit() {
     this.auth.authUser.subscribe((v) => {
       console.log(v);
-      this.authUser = v;
-      console.log(this.authUser.recipients);
-      this.myRecipients = this.authUser.recipients;
-      this.myAccounts = this.authUser.bankAccounts;
+      this.authUser = v.user;
+      this.myRecipients = v.recipients;
+      this.myAccounts = v.bankAccounts;
     });
 
     this.firstFormGroup = this._formBuilder.group({

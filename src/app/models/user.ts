@@ -1,12 +1,9 @@
-import {BankAccount} from '../shared/model/bank-account';
-import {BankTransaction} from 'app/shared/model/bank-transaction';
 
 export interface User {
   userId: number;
   username: string;
   password: string;
   email: string;
-  bankAccounts: BankAccount[];
-  recipients: number[];
-  bankTransactions: BankTransaction[];
+  bankAccounts: string[];
+  recipients: string[];
 }

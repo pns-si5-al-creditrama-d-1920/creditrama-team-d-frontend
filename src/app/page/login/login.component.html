@@ -10,18 +10,18 @@
             <div class="form-row">
               <i class="material-icons">email</i>
               <mat-form-field color="accent">
-                <input type="text" matInput placeholder="Email address" [(ngModel)]='username'/>
+                <input [(ngModel)]='username' matInput placeholder="Email address" type="text"/>
               </mat-form-field>
             </div>
             <div class="form-row">
               <i class="material-icons">lock_outline</i>
               <mat-form-field color="accent">
-                <input type="password" matInput placeholder="Password" [(ngModel)]='password'/>
+                <input [(ngModel)]='password' matInput placeholder="Password" type="password"/>
               </mat-form-field>
             </div>
           </div>
           <div class="card-footer">
-            <button mat-button (click)="loginBtn()">VALIDER</button>
+            <button (click)="loginBtn()" mat-button>VALIDER</button>
           </div>
         </div>
       </div>

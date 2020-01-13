@@ -1,19 +1,19 @@
 <div class="mat-elevation-z8">
-	<table mat-table [dataSource]="dataSource">
+  <table [dataSource]="dataSource" mat-table>
 
-		<ng-container matColumnDef="userId">
-			<th mat-header-cell *matHeaderCellDef> UserId </th>
-			<td mat-cell *matCellDef="let element"> {{element.userId}} </td>
-		</ng-container>
+    <ng-container matColumnDef="userId">
+      <th *matHeaderCellDef mat-header-cell> UserId</th>
+      <td *matCellDef="let element" mat-cell> {{element.userId}} </td>
+    </ng-container>
 
-		<ng-container matColumnDef="username">
-			<th mat-header-cell *matHeaderCellDef> Username </th>
-			<td mat-cell *matCellDef="let element"> {{element.username}} </td>
-		</ng-container>
+    <ng-container matColumnDef="username">
+      <th *matHeaderCellDef mat-header-cell> Username</th>
+      <td *matCellDef="let element" mat-cell> {{element.username}} </td>
+    </ng-container>
 
     <ng-container matColumnDef="bankAccount">
-      <th mat-header-cell *matHeaderCellDef> Bank accounts </th>
-      <td mat-cell *matCellDef="let element">
+      <th *matHeaderCellDef mat-header-cell> Bank accounts</th>
+      <td *matCellDef="let element" mat-cell>
         <span *ngFor="let bankaccount of element.bankAccounts">
 					{{bankaccount.bankAccountId}} <br/>
 					<mat-divider></mat-divider>
@@ -22,8 +22,8 @@
     </ng-container>
 
     <ng-container matColumnDef="bankAccount.balance">
-      <th mat-header-cell *matHeaderCellDef> Bank account balances</th>
-      <td mat-cell *matCellDef="let element">
+      <th *matHeaderCellDef mat-header-cell> Bank account balances</th>
+      <td *matCellDef="let element" mat-cell>
         <span *ngFor="let bankaccount of element.bankAccounts">
 					{{bankaccount.balance}} <br/>
 					<mat-divider></mat-divider>
@@ -31,42 +31,42 @@
       </td>
     </ng-container>
 
-		<ng-container matColumnDef="recipient">
-			<th mat-header-cell *matHeaderCellDef> Recipients </th>
-			<td mat-cell *matCellDef="let element"> {{element.recipients}} </td>
-		</ng-container>
+    <ng-container matColumnDef="recipient">
+      <th *matHeaderCellDef mat-header-cell> Recipients</th>
+      <td *matCellDef="let element" mat-cell> {{element.recipients}} </td>
+    </ng-container>
 
-		<ng-container matColumnDef="transaction.sourceId">
-			<th mat-header-cell *matHeaderCellDef> Transaction source </th>
-			<td mat-cell *matCellDef="let element">
+    <ng-container matColumnDef="bankAccount.sourceId">
+      <th *matHeaderCellDef mat-header-cell> Transaction source</th>
+      <td *matCellDef="let element" mat-cell>
 				<span *ngFor="let transac of element.bankTransactions">
 					{{transac.sourceId}} <br/>
 					<mat-divider></mat-divider>
 				</span>
-			</td>
-		</ng-container>
+      </td>
+    </ng-container>
 
-		<ng-container matColumnDef="transaction.destinationId">
-			<th mat-header-cell *matHeaderCellDef> Transaction destination </th>
-			<td mat-cell *matCellDef="let element">
+    <ng-container matColumnDef="bankAccount.destinationId">
+      <th *matHeaderCellDef mat-header-cell> Transaction destination</th>
+      <td *matCellDef="let element" mat-cell>
 				<span *ngFor="let transac of element.bankTransactions">
 					{{transac.destinationId}} <br/>
 					<mat-divider></mat-divider>
 				</span>
-			</td>
-		</ng-container>
+      </td>
+    </ng-container>
 
-		<ng-container matColumnDef="transaction.amount">
-			<th mat-header-cell *matHeaderCellDef> Transaction amount </th>
-			<td mat-cell *matCellDef="let element">
+    <ng-container matColumnDef="bankAccount.amount">
+      <th *matHeaderCellDef mat-header-cell> Transaction amount</th>
+      <td *matCellDef="let element" mat-cell>
 				<span *ngFor="let transac of element.bankTransactions">
 					{{transac.amount}} <br/>
 					<mat-divider></mat-divider>
 				</span>
-			</td>
-		</ng-container>
+      </td>
+    </ng-container>
 
-		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-	</table>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
 </div>

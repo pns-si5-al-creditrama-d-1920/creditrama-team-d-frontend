@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed, inject, tick, fakeAsync} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -7,17 +7,13 @@ import {HomeComponent} from './home.component';
 import {NavbarComponent} from 'app/shared/navbar/navbar.component';
 import {FigurecardComponent} from 'app/shared/figurecard/figurecard.component';
 import {ImagecardComponent} from 'app/shared/imagecard/imagecard.component';
-import {MatFormField} from '@angular/material/form-field';
 import {MsgIconBtnComponent} from 'app/shared/msgiconbtn/msgiconbtn.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
 import {ObserversModule} from '@angular/cdk/observers';
-import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {BankService} from "../../services/bank.service";
 import {OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
-import {Router} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 
 describe('HomeComponent', () => {

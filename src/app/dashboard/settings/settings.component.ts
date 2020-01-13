@@ -8,7 +8,8 @@ import {SettingsService} from '../../services/settings.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(public settingService: SettingsService) { }
+  constructor(public settingService: SettingsService) {
+  }
 
   ngOnInit() {
     const defaultId = this.settingService.getSidebarImageIndex();
