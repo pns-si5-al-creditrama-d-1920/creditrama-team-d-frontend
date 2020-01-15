@@ -44,18 +44,23 @@ export class AuthService {
 
   public getAuthUser(act: boolean = false): Observable<AuthUser> {
 	if (!this.authUser || act) {
-		console.log(environment.BANK_SERVICE_URL);
-		this.authUser = this.http.get<AuthUser>(environment.BANK_SERVICE_URL + 'clients/auth').pipe(
-		mergeMap((u: any) => {
-			console.log('USER : ', u);
-			return forkJoin(this.bankAccount.getAccountsById(u.userId), this.bankAccount.getAccountByIbans(u.recipients, u.userId),
-        this.transactionService.getTransactionsById(u.userId))
-			.pipe(map(([first, second, third]) => {
-				return {user: u as User, bankAccounts: first, recipients: second, transactions: third} as AuthUser;
-			}));
-		}),
-		publishReplay(1), // this tells Rx to cache the latest emitted
-		refCount()); // and this tells Rx to keep the Observable alive as long as there are any Subscribers
+        console.log(environment.CLIENT_SERVICE_URL);
+        this.authUser = this.http.get<AuthUser>(environment.CLIENT_SERVICE_URL + 'clients/auth').pipe(
+            mergeMap((u: any) => {
+                console.log('USER : ', u);
+                return forkJoin(this.bankAccount.getAccountsById(u.userId), this.bankAccount.getAccountByIbans(u.recipients, u.userId),
+                    this.transactionService.getTransactionsById(u.userId))
+                    .pipe(map(([first, second, third]) => {
+                        return {
+                            user: u as User,
+                            bankAccounts: first,
+                            recipients: second,
+                            transactions: third
+                        } as AuthUser;
+                    }));
+            }),
+            publishReplay(1), // this tells Rx to cache the latest emitted
+            refCount()); // and this tells Rx to keep the Observable alive as long as there are any Subscribers
 	}
 	return this.authUser;
   }
