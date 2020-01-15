@@ -16,8 +16,8 @@
                 <mat-form-field>
                   <mat-label>Quel est le compte a débiter ?</mat-label>
                   <mat-select [(value)]="selectedAccount" formControlName="sourceId" required>
-                    <mat-option *ngFor="let account of myAccounts" [value]="account.bankAccountId">
-                      {{account.bankAccountId}} - {{account.balance}}€
+                    <mat-option *ngFor="let account of myAccounts" [value]="account.accountNumber">
+                      {{account.accountNumber}} - {{account.balance}}€
                     </mat-option>
                   </mat-select>
                 </mat-form-field>

@@ -8,7 +8,7 @@ import {BankTransactionRequest} from '../models/bank-transaction-request';
 
 @Injectable()
 export class ClientService {
-  private route = '/bank';
+  private route = 'bank';
 
   constructor(private http: HttpClient) {
   }
@@ -21,7 +21,7 @@ export class ClientService {
 	return this.http.post(environment.BANK_SERVICE_URL + this.route + '/clients/' + userId + '/bank-accounts', balance);
   }
 
-  updateRecipients(userId: number, newRecipient: number) {
+  updateRecipients(userId: number, newRecipient: string) {
 	console.log('updateRecipients service');
 	console.log(userId);
 	console.log(newRecipient);

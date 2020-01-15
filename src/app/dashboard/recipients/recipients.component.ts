@@ -14,10 +14,10 @@ declare const swal: any;
 })
 export class RecipientsComponent implements OnInit {
   authUser: User;
-  newRecipient: number;
+  newRecipientIban: string;
   currentRecipients: BankAccount[];
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: ClientService) {
+  constructor(private auth: AuthService, private route: ActivatedRoute, private clientService: ClientService) {
   }
 
   ngOnInit() {
@@ -27,20 +27,31 @@ export class RecipientsComponent implements OnInit {
     });
   }
 
+  containsRecipient() : boolean {
+    for(let recipient of this.currentRecipients) {
+      if (recipient.iban === this.newRecipientIban) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   updateRecipients() {
-    /**
      console.log('update recipients TS');
-     if (!this.currentRecipients.includes(this.newRecipient)) {
+     if (!this.containsRecipient()) {
       this.auth.authUser.subscribe(v => {
-        this.bankService
-          .updateRecipients(v.userId, this.newRecipient)
+        this.clientService
+          .updateRecipients(v.user.userId, this.newRecipientIban)
           .subscribe(
-            (response) => this.currentRecipients.push(this.newRecipient),
-            (error => swal({
-              title: 'Error',
-              text: 'This bank account doesn\'t exist',
-              confirmButtonClass: 'btn btn-danger'
-            })));
+            (response) => this.currentRecipients.push(response as BankAccount),
+            (error => {
+              console.log(error)
+              swal({
+                title: 'Error',
+                text: 'This bank account doesn\'t exist',
+                confirmButtonClass: 'btn btn-danger'
+              });
+          }));
       });
       this.auth.getAuthUser(true);
     } else {
@@ -49,6 +60,6 @@ export class RecipientsComponent implements OnInit {
         text: 'This bank account is already one of your recipients',
         confirmButtonClass: 'btn btn-danger'
       });
-    }**/
+    }
   }
 }
