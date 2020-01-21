@@ -48,7 +48,7 @@ export class AuthService {
         this.authUser = this.http.get<AuthUser>(environment.CLIENT_SERVICE_URL + 'clients/auth').pipe(
             mergeMap((u: any) => {
                 console.log('USER : ', u);
-                return forkJoin(this.bankAccount.getAccountsById(u.userId), this.bankAccount.getAccountByIbans(u.recipients, u.userId),
+                return forkJoin(this.bankAccount.getAccountsById(u.userId), this.bankAccount.getRecipientsByIbans(u.userId),
                     this.transactionService.getTransactionsById(u.userId))
                     .pipe(map(([first, second, third]) => {
                         return {

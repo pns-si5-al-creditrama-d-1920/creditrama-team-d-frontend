@@ -16,9 +16,8 @@ export class BankAccountService {
 	return this.http.get<BankAccount>(environment.BANKACCOUNT_SERVICE_URL + 'accounts/' + iban);
   }
 
-  getAccountByIbans(ibans: string[], id: number): Observable<BankAccount[]> {
-	console.log('BODYYY', ibans);
-	return this.http.post<BankAccount[]>(environment.BANKACCOUNT_SERVICE_URL + 'clients/' + id + '/recipients/', ibans);
+  getRecipientsByIbans(id: number): Observable<BankAccount[]> {
+	return this.http.get<BankAccount[]>(environment.CLIENT_SERVICE_URL + 'clients/' + id + '/recipients');
   }
 
   getAccountsById(id: number): Observable<BankAccount[]> {

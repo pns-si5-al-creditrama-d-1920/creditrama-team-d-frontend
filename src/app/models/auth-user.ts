@@ -6,5 +6,4 @@ export interface AuthUser {
   user: User;
   bankAccounts: BankAccount[];
   transactions?: BankTransaction[];
-  recipients: BankAccount[];
 }

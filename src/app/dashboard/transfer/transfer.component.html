@@ -17,7 +17,7 @@
                   <mat-label>Quel est le compte a débiter ?</mat-label>
                   <mat-select [(value)]="selectedAccount" formControlName="sourceId" required>
                     <mat-option *ngFor="let account of myAccounts" [value]="account.iban">
-                      {{account.accountNumber}} - {{account.balance}}€
+                      {{account.iban}} - {{account.balance}}€
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -33,7 +33,7 @@
                   <mat-label>Quel est le compte a créditer ?</mat-label>
                   <mat-select [(value)]="selectedRecipient" formControlName="destinationId" required>
                     <mat-option *ngFor="let recp of myRecipients" [value]="recp.iban">
-                      {{recp.iban}}
+                      {{  recp.firstName + ' ' + recp.lastName + ' - ' + ((recp.iban.length > 10) ? (recp.iban | slice:0:10) + '...' : recp.iban)}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>

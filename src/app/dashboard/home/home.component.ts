@@ -13,6 +13,7 @@ import {AuthUser} from '../../models/auth-user';
 export class HomeComponent implements OnInit {
   authUser: AuthUser;
   lastTransaction = 'Aucune transaction';
+  totalBalance: number;
 
   constructor(private auth: AuthService, private route: ActivatedRoute) {
   }
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
 		this.auth.getAuthUser().subscribe((v) => {
 		console.log(v);
 		this.authUser = v;
+		this.totalBalance = v.bankAccounts.map(nb => nb.balance).reduce((a, b) => a + b, 0);
 		if (this.authUser.transactions.length !== 0) {
 			this.authUser.transactions.sort((a, b) => (a.createdTransaction.getTime() > b.createdTransaction.getTime()) ? 1 : -1);
 			const lastTransact = this.authUser.transactions[0];
@@ -31,7 +33,7 @@ export class HomeComponent implements OnInit {
 			} else {
 			this.lastTransaction = '-' + lastTransact.amount + '€';
 			}
-			}
-		}));
 		}
+		}));
   }
+}

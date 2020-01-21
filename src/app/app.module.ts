@@ -45,6 +45,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule, MatSelectModule} from '@angular/material';
 import {UserService} from './services/user.service';
+import {AngularIbanModule} from 'angular-iban';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import {UserService} from './services/user.service';
     MatTableModule,
     MatSelectModule,
     MatDividerModule,
+    AngularIbanModule,
     MatListModule, MatStepperModule
   ],
   providers: [SettingsService, {
