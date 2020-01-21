@@ -1,5 +1,5 @@
-export interface BankTransactionRequest {
-  sourceId: number;
-  destinationId: number;
+export class BankTransactionRequest {
+  ibanSource: string;
+  ibanDest: string;
   amount: number;
 }

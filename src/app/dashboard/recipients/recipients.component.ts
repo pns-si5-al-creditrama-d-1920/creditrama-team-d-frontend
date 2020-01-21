@@ -43,7 +43,10 @@ export class RecipientsComponent implements OnInit {
         this.clientService
           .updateRecipients(v.user.userId, this.newRecipientIban)
           .subscribe(
-            (response) => this.currentRecipients.push(response as BankAccount),
+            (response) => {
+              this.currentRecipients.push(response as BankAccount);
+              console.log(response);
+            },
             (error => {
               console.log(error)
               swal({
@@ -51,7 +54,7 @@ export class RecipientsComponent implements OnInit {
                 text: 'This bank account doesn\'t exist',
                 confirmButtonClass: 'btn btn-danger'
               });
-          }));
+            }));
       });
       this.auth.getAuthUser(true);
     } else {

@@ -4,11 +4,10 @@ import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {ClientService} from 'app/services/client.service';
 import {User} from '../../models/user';
-import {BankTransaction} from 'app/models/bank-transaction';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
-import {AuthUser} from '../../models/auth-user';
 import {BankTransactionRequest} from '../../models/bank-transaction-request';
+import {BankTransactionService} from 'app/services/bank-transaction.service';
 
 @Component({
   selector: 'app-transfer',
@@ -27,11 +26,12 @@ export class TransferComponent implements OnInit {
   thirdFormGroup: FormGroup;
   transaction: BankTransactionRequest;
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: ClientService, private _formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: ClientService, private _formBuilder: FormBuilder, private userService: UserService, private bankTransactionService: BankTransactionService) {
   }
 
 
   ngOnInit() {
+    this.transaction = new BankTransactionRequest();
     this.auth.authUser.subscribe((v) => {
       console.log(v);
       this.authUser = v.user;
@@ -54,11 +54,11 @@ export class TransferComponent implements OnInit {
   transfer() {
     console.log(this.thirdFormGroup.getRawValue());
     this.transaction.amount = this.thirdFormGroup.getRawValue().amount;
-    this.transaction.sourceId = this.firstFormGroup.getRawValue().sourceId;
-    this.transaction.destinationId = this.secondFormGroup.getRawValue().destinationId;
+    this.transaction.ibanSource = this.firstFormGroup.getRawValue().sourceId;
+    this.transaction.ibanDest = this.secondFormGroup.getRawValue().destinationId;
 
     console.log(this.transaction);
-    this.bankService.transfer(this.authUser.userId, this.transaction).subscribe((response) => console.log(response));
+    this.bankTransactionService.makeTransaction(this.transaction).subscribe((response) => console.log(response));
     this.auth.getAuthUser(true);
   }
 

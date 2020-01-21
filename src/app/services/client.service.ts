@@ -13,23 +13,23 @@ export class ClientService {
   }
 
   getBankAccounts(userId: number): Observable<any> {
-      return this.http.get(environment.CLIENT_SERVICE_URL + this.route + '/clients/' + userId + '/bank-accounts');
+      return this.http.get(environment.CLIENT_SERVICE_URL + 'clients/' + userId + '/bank-accounts');
   }
 
   addBankAccount(userId: number, balance: number): Observable<any> {
-      return this.http.post(environment.CLIENT_SERVICE_URL + this.route + '/clients/' + userId + '/bank-accounts', balance);
+    return this.http.post(environment.CLIENT_SERVICE_URL + 'clients/' + userId + '/bank-accounts', balance);
   }
 
   updateRecipients(userId: number, newRecipient: string) {
-      console.log('updateRecipients service');
-      console.log(userId);
-      console.log(newRecipient);
-      console.log(environment.CLIENT_SERVICE_URL + this.route + '/' + 'clients/' + userId + '/recipients');
-      return this.http.post(environment.CLIENT_SERVICE_URL + this.route + '/' + 'clients/' + userId + '/recipients', newRecipient);
+    console.log('updateRecipients service');
+    console.log(userId);
+    console.log(newRecipient);
+    console.log(environment.CLIENT_SERVICE_URL + 'clients/' + userId + '/recipients');
+    return this.http.post(environment.CLIENT_SERVICE_URL + 'clients/' + userId + '/recipients', newRecipient);
   }
 
   transfer(userId: number, transaction: BankTransactionRequest) {
-      return this.http.post(environment.CLIENT_SERVICE_URL + this.route + '/clients/' + userId + '/transactions', transaction);
+    return this.http.post(environment.CLIENT_SERVICE_URL + 'clients/' + userId + '/transactions', transaction);
   }
 
   registerWithBankAccount(userName: string, userMail: string, userPassword: string) {
