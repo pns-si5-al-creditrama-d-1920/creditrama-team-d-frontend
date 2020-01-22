@@ -15,7 +15,7 @@
       <th *matHeaderCellDef mat-header-cell> Bank accounts</th>
       <td *matCellDef="let element" mat-cell>
         <span *ngFor="let bankaccount of element.bankAccounts">
-					{{bankaccount.bankAccountId}} <br/>
+					{{bankaccount.iban}} <br/>
 					<mat-divider></mat-divider>
 				</span>
       </td>
@@ -31,10 +31,15 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="recipient">
-      <th *matHeaderCellDef mat-header-cell> Recipients</th>
-      <td *matCellDef="let element" mat-cell> {{element.recipients}} </td>
-    </ng-container>
+      <ng-container matColumnDef="recipient">
+          <th *matHeaderCellDef mat-header-cell> Recipients</th>
+          <td *matCellDef="let element" mat-cell>
+          <span *ngFor="let recipient of element.recipients">
+					{{recipient.iban}} - {{recipient.firstName}} <br/>
+					<mat-divider></mat-divider>
+				</span>
+          </td>
+      </ng-container>
 
     <ng-container matColumnDef="bankAccount.sourceId">
       <th *matHeaderCellDef mat-header-cell> Transaction source</th>

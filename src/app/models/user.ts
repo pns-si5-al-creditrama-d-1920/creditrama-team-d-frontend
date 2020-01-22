@@ -1,4 +1,5 @@
 import {Recipient} from './recipient';
+import {BankAccount} from "./bank-account";
 
 export interface User {
   userId: number;
@@ -6,4 +7,5 @@ export interface User {
   password: string;
   email: string;
   recipients: Recipient[];
+  bankAccounts: BankAccount[];
 }

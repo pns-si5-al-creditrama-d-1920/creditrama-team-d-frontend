@@ -40,14 +40,14 @@ export class ClientService {
   }
 
   register(userName: string, userMail: string, userPassword: string): Observable<any> {
-      return this.http.post(environment.CLIENT_SERVICE_URL + '/register', {
-          email: userMail,
-          password: userPassword,
-          username: userName
+      return this.http.post(environment.CLIENT_SERVICE_URL + 'register', {
+        email: userMail,
+        password: userPassword,
+        username: userName
       });
   }
 
   dump(): Observable<any> {
-      return this.http.get(environment.CLIENT_SERVICE_URL + '/dump');
+    return this.http.get(environment.CLIENT_SERVICE_URL + 'dump');
   }
 }

@@ -13,14 +13,18 @@ export class BankAccountService {
   }
 
   getAccountByIban(iban: string): Observable<BankAccount> {
-	return this.http.get<BankAccount>(environment.BANKACCOUNT_SERVICE_URL + 'accounts/' + iban);
+    return this.http.get<BankAccount>(environment.BANKACCOUNT_SERVICE_URL + 'accounts/' + iban);
   }
 
   getRecipientsByIbans(id: number): Observable<BankAccount[]> {
-	return this.http.get<BankAccount[]>(environment.CLIENT_SERVICE_URL + 'clients/' + id + '/recipients');
+    return this.http.get<BankAccount[]>(environment.CLIENT_SERVICE_URL + 'clients/' + id + '/recipients');
   }
 
   getAccountsById(id: number): Observable<BankAccount[]> {
-	return this.http.get<BankAccount[]>(environment.BANKACCOUNT_SERVICE_URL + 'clients/' + id + '/accounts');
+    return this.http.get<BankAccount[]>(environment.BANKACCOUNT_SERVICE_URL + 'clients/' + id + '/accounts');
+  }
+
+  dump(): Observable<any> {
+    return this.http.get(environment.BANKACCOUNT_SERVICE_URL + 'dump');
   }
 }

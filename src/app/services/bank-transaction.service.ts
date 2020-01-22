@@ -26,4 +26,8 @@ export class BankTransactionService {
   makeTransaction(transaction: BankTransactionRequest) {
     return this.http.post(environment.TRANSACTION_SERVICE_URL + 'transactions', transaction);
   }
+
+  dump(): Observable<any> {
+    return this.http.get(environment.TRANSACTION_SERVICE_URL + 'dump');
+  }
 }
