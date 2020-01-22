@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {BankAccountService} from "../services/bank-account.service";
 import {BankTransactionService} from "../services/bank-transaction.service";
 import {BankAccount} from "../models/bank-account";
+import { BankTransaction } from 'app/models/bank-transaction';
 
 @Component({
   selector: 'app-dump',
@@ -18,12 +19,18 @@ export class DumpComponent implements OnInit {
     'bankAccount',
     'bankAccount.balance',
     'recipient',
-    /*'transaction.sourceId',
-    'transaction.destinationId',
-    'transaction.amount'*/
+  ];
+  transactionColumns: string[] = [
+    'uuid',
+    'source',
+    'dest',
+    'amount',
+    'createdTransaction',
+    'transactionState'
   ];
   clients: User[];
   dataSource = new MatTableDataSource<User>();
+  transactions = new MatTableDataSource<BankTransaction>();
 
   constructor(private clientService: ClientService, private bankAccountService: BankAccountService, private transactionService: BankTransactionService) {
   }
@@ -48,8 +55,8 @@ export class DumpComponent implements OnInit {
         this.clients = clientsReturned;
       });
 
-      this.transactionService.dump().subscribe(transactions => {
-        console.log(transactions);
+      this.transactionService.dump().subscribe((transactions : BankTransaction[])=> {
+        this.transactions = new MatTableDataSource<BankTransaction>(transactions);
       });
 
       this.clients = clientsReturned;
