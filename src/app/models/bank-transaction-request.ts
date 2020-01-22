@@ -1,4 +1,4 @@
-export class BankTransactionRequest {
+export interface BankTransactionRequest {
   ibanSource: string;
   ibanDest: string;
   amount: number;

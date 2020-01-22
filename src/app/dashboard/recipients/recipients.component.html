@@ -30,7 +30,8 @@
         <div class="card-content">
           <h4>Current recipients</h4>
           <mat-list>
-            <mat-list-item *ngFor="let recipient of currentRecipients">{{recipient.firstName+' '+recipient.lastName}}
+            <mat-list-item
+                    *ngFor="let recipient of this.authUser.user.recipients">{{recipient.firstName + ' ' + recipient.lastName}}
             </mat-list-item>
           </mat-list>
         </div>
