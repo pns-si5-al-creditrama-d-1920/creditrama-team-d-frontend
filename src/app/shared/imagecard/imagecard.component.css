@@ -1,11 +1,11 @@
-.image-card{
+.image-card {
   position: relative;
   width: 100%;
   margin: 25px 0;
   padding: 15px;
 }
 
-.header{
+.header {
   position: relative;
   overflow: hidden;
   margin-top: -40px;
@@ -14,19 +14,19 @@
   box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-.header img{
+.header img {
   position: relative;
   max-width: 100%;
   border-radius: 6px;
 }
 
-.body{
+.body {
   text-align: center;
   padding: 10px 10px 13px 10px;
   margin-top: 7px;
 }
 
-.body p{
+.body p {
   margin-top: 5px;
   color: #999;
   font-weight: 100;
@@ -34,25 +34,25 @@
   border-bottom: 1px solid #eee;
 }
 
-.footer{
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 8px 2px 8px;
 }
 
-.footer .position{
+.footer .position {
   display: flex;
   align-items: center;
   color: #999;
   font-weight: 100;
 }
 
-.footer i{
+.footer i {
   font-size: 17px;
   margin-right: 3px;
 }
 
-.footer h4{
-  color: rgba(0,0,0, 0.87);
+.footer h4 {
+  color: rgba(0, 0, 0, 0.87);
 }

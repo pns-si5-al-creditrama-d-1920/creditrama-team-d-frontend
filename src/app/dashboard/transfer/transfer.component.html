@@ -9,15 +9,15 @@
         <div class="card-content">
           <h4 class="card-title">New transfer</h4>
 
-          <mat-horizontal-stepper [linear]=true #stepper>
+          <mat-horizontal-stepper #stepper [linear]=true>
             <mat-step [stepControl]="firstFormGroup">
               <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel>Choissisez votre compte en banque</ng-template>
                 <mat-form-field>
                   <mat-label>Quel est le compte a débiter ?</mat-label>
-                  <mat-select [(value)]="selectedAccount" required formControlName="sourceId">
-                    <mat-option *ngFor="let account of myAccounts" [value]="account.bankAccountId">
-                      {{account.bankAccountId}} - {{account.balance}}€
+                  <mat-select [(value)]="selectedAccount" formControlName="sourceId" required>
+                    <mat-option *ngFor="let account of myAccounts" [value]="account.iban">
+                      {{account.iban}} - {{account.balance}}€
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -31,9 +31,9 @@
                 <ng-template matStepLabel>Choissisez le compte bénéficiaire</ng-template>
                 <mat-form-field>
                   <mat-label>Quel est le compte a créditer ?</mat-label>
-                  <mat-select [(value)]="selectedRecipient" required formControlName="destinationId">
-                    <mat-option *ngFor="let recp of myRecipients" [value]="recp">
-                      {{recp}}
+                  <mat-select [(value)]="selectedRecipient" formControlName="destinationId" required>
+                    <mat-option *ngFor="let recp of myRecipients" [value]="recp.iban">
+                      {{  recp.firstName + ' ' + recp.lastName + ' - ' + ((recp.iban.length > 10) ? (recp.iban | slice:0:10) + '...' : recp.iban)}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -47,10 +47,10 @@
               <form [formGroup]="thirdFormGroup">
                 <ng-template matStepLabel>Somme</ng-template>
                 <mat-form-field>
-                  <input matInput placeholder="Montant"  type="number" formControlName="amount" value=0 required>
+                  <input formControlName="amount" matInput placeholder="Montant" required type="number" value=0>
                 </mat-form-field>
                 <div>
-                  <button mat-button  matStepperNext>Next</button>
+                  <button mat-button matStepperNext>Next</button>
                 </div>
               </form>
             </mat-step>
@@ -60,7 +60,7 @@
               <h3> Montant : {{this.thirdFormGroup.getRawValue().amount}}</h3>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="transfer()" class="btn btn-rose">Finish</button>
+                <button (click)="transfer()" class="btn btn-rose" mat-button>Finish</button>
               </div>
             </mat-step>
           </mat-horizontal-stepper>
@@ -93,7 +93,7 @@
             <button (click)="transfer()" class="btn btn-rose">Transfer</button>
           </div>
         </div> -->
+        </div>
       </div>
     </div>
   </div>
-</div>

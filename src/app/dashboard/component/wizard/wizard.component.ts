@@ -9,10 +9,13 @@ declare const $: any;
 })
 export class WizardComponent implements OnInit, AfterViewInit {
   tabIndex = 0;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
   ngAfterViewInit() {
     const preBtn = <HTMLElement>document.getElementById('preBtn');
     const moveTab = <HTMLElement>document.querySelector('.move-tab');
@@ -56,7 +59,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       moveTab.style.left = screenWidth > 990 ? '20vw' : '30vw';
       nextBtn.style.visibility = 'visible';
       moveTab.innerHTML = 'Account';
-    }else if (this.tabIndex === 1) {
+    } else if (this.tabIndex === 1) {
       this.tabIndex--;
       moveTab.style.left = '-1vw';
       preBtn.style.visibility = 'hidden';
@@ -79,7 +82,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       moveTab.style.left = screenWidth > 990 ? '20vw' : '30vw';
       preBtn.style.visibility = 'visible';
       moveTab.innerHTML = 'Account';
-    }else if (this.tabIndex === 1) {
+    } else if (this.tabIndex === 1) {
       this.tabIndex++;
       moveTab.style.left = screenWidth > 990 ? '42vw' : '61.5vw';
       nextBtn.style.visibility = 'hidden';

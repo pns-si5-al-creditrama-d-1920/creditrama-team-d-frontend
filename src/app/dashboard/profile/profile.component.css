@@ -1,4 +1,4 @@
-.right-profile{
+.right-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,28 +7,28 @@
   /*margin-top: 60px;*/
 }
 
-.profile{
+.profile {
   position: absolute;
   top: -40px;
 }
 
-.profile img{
+.profile img {
   border-radius: 50%;
   width: 130px;
   box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-.right-profile h6{
+.right-profile h6 {
   margin-top: 100px;
   margin-bottom: 8px;
   color: #999;
 }
 
-.right-profile h4{
+.right-profile h4 {
   margin-bottom: 5px;
 }
 
-.right-profile p{
+.right-profile p {
   color: #999;
 }
 
@@ -36,7 +36,7 @@
   margin-top: 15px;
 }
 
-.card{
+.card {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -63,40 +63,40 @@
   color: #fff;
 }
 
-.card-content{
+.card-content {
   position: relative;
 }
 
-.card-title{
+.card-title {
   padding-left: 80px;
 }
 
-.mat-input-container{
+.mat-input-container {
   width: 100%;
 }
 
-.category{
+.category {
   font-weight: 300;
 }
 
-form{
+form {
   margin-top: 30px;
 }
 
-.row{
+.row {
   margin-top: 15px;
 }
 
-.mat-input-container textarea{
+.mat-input-container textarea {
   height: 90px;
 }
 
-.textarea-label{
+.textarea-label {
   color: #aaa;
   margin-bottom: 10px;
 }
 
-.action-btn{
+.action-btn {
   display: flex;
   justify-content: flex-end;
   padding-right: 15px;

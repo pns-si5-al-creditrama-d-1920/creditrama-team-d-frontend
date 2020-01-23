@@ -35,7 +35,7 @@ import {PanelsComponent} from './dashboard/component/panels/panels.component';
 import {SettingsService} from './services/settings.service';
 import {WizardComponent} from './dashboard/component/wizard/wizard.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {BankService} from './services/bank.service';
+import {ClientService} from './services/client.service';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {TokenInterceptor} from './interceptors/token.interceptor';
 import {RecipientsComponent} from './dashboard/recipients/recipients.component';
@@ -44,7 +44,8 @@ import {DumpComponent} from './dump/dump.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule, MatSelectModule} from '@angular/material';
-import {UserService} from "./services/user.service";
+import {UserService} from './services/user.service';
+import {AngularIbanModule} from 'angular-iban';
 
 @NgModule({
   declarations: [
@@ -90,13 +91,14 @@ import {UserService} from "./services/user.service";
     MatTableModule,
     MatSelectModule,
     MatDividerModule,
+    AngularIbanModule,
     MatListModule, MatStepperModule
   ],
   providers: [SettingsService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }, BankService, UserService],
+  }, ClientService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

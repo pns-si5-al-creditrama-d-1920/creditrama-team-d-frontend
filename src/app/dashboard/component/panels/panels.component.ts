@@ -11,6 +11,7 @@ export class PanelsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
   }
+
   ngAfterViewInit() {
     const activeTabs = document.getElementsByClassName('default-active');
     for (let i = 0; i < activeTabs.length; i++) {
@@ -31,6 +32,7 @@ export class PanelsComponent implements OnInit, AfterViewInit {
     document.getElementById(id).style.display = 'block';
     evt.currentTarget.className += ' active';
   }
+
   vTabClick(evt, id) {
     const tabcontents = document.querySelectorAll('.v-tab .tab-content');
     for (let i = 0; i < tabcontents.length; i++) {

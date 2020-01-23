@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {User} from '../../models/user';
 import {AuthService} from '../../services/auth.service';
-import {BankTransaction} from '../../shared/model/bank-transaction';
+import {AuthUser} from '../../models/auth-user';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +9,9 @@ import {BankTransaction} from '../../shared/model/bank-transaction';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  authUser: User;
-  mainAccount: number;
+  authUser: AuthUser;
   lastTransaction = 'Aucune transaction';
+  totalBalance: number;
 
   constructor(private auth: AuthService, private route: ActivatedRoute) {
   }
@@ -23,19 +22,16 @@ export class HomeComponent implements OnInit {
 		this.auth.getAuthUser().subscribe((v) => {
 		console.log(v);
 		this.authUser = v;
-		this.mainAccount = this.authUser.bankAccounts[0].bankAccountId;
-		let lastTransac: BankTransaction = {bankTransactionId: -1, destinationId: -1, sourceId: -1, amount: 0};
-		this.authUser.bankTransactions.forEach(trans => {
-			if (trans.bankTransactionId > lastTransac.bankTransactionId) {
-			lastTransac = trans;
+		this.totalBalance = v.bankAccounts.map(nb => nb.balance).reduce((a, b) => a + b, 0);
+		if (this.authUser.transactions.length !== 0) {
+			this.authUser.transactions.sort((a, b) => (a.createdTransaction.getTime() > b.createdTransaction.getTime()) ? 1 : -1);
+			const lastTransact = this.authUser.transactions[this.authUser.transactions.length - 1];
+			if (this.authUser.user.userId === lastTransact.dest.client) {
+				this.lastTransaction = '+' + lastTransact.amount + '€';
+			} else {
+				this.lastTransaction = '-' + lastTransact.amount + '€';
 			}
-		});
-		if (this.authUser.userId === lastTransac.destinationId) {
-			this.lastTransaction = '+' + lastTransac.amount + '€';
-		} else if (lastTransac.destinationId !== -1) {
-			this.lastTransaction = '-' + lastTransac.amount + '€';
 		}
-		})
-	);
+		}));
   }
 }

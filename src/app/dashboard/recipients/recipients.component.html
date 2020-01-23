@@ -1,39 +1,41 @@
 <div class="container">
-	<app-navbar title="Recipients"></app-navbar>
-	<div class="row" style="margin-top: 30px">
-	  <div class="col-md-8">
-		<div class="card">
-		  <div class="card-header">
-			<i class="material-icons">perm_identity</i>
-		  </div>
-		  <div class="card-content">
-			<h4 class="card-title">Manage recipients
-			  <small class="category">Add new recipients</small>
-			</h4>
-			  <div class="row">
+  <app-navbar title="Recipients"></app-navbar>
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <i class="material-icons">perm_identity</i>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">Manage recipients
+            <small class="category">Add new recipients</small>
+          </h4>
+          <div class="row">
 
-          <form style="width: 80%; margin-left: 5%">
-            <mat-form-field style="width: 80%">
-              <input matInput type="number" placeholder="Recipient bank account" [(ngModel)]="newRecipient" value=0 name="newRecipient">
-            </mat-form-field>
-          </form>
-			  </div>
-			  <div class="row action-btn">
-				<button (click)="updateRecipients()" class="btn btn-rose">Update Recipients</button>
-			  </div>
-		  </div>
-		</div>
-	  </div>
-	  <div class="col-md-4">
-		<div class="card right-profile">
-			<div class="card-content">
-				<h4>Current recipients</h4>
-        <mat-list>
-          <mat-list-item *ngFor="let recipient of currentRecipients">{{recipient}}
-          </mat-list-item>
-        </mat-list>
-			</div>
-		</div>
-	  </div>
-	</div>
+            <form style="width: 80%; margin-left: 5%">
+              <mat-form-field style="width: 80%">
+                <input [(ngModel)]="newRecipientIban" matInput name="newRecipientIban" placeholder="Recipient bank account iban" type="string"
+                       value=0>
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="row action-btn">
+            <button (click)="updateRecipients()" class="btn btn-rose">Update Recipients</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card right-profile">
+        <div class="card-content">
+          <h4>Current recipients</h4>
+          <mat-list>
+            <mat-list-item
+                    *ngFor="let recipient of this.authUser.user.recipients">{{recipient.firstName + ' ' + recipient.lastName}}
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

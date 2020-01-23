@@ -9,21 +9,19 @@ import {User} from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
+  userName: Observable<string> = of('Unknown');
+
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  userName: Observable<string> = of('Unknown');
-
-
   public getUserName(id): void {
-    console.log(id);
-    console.log( environment.BANK_SERVICE_URL + 'clients/' + id);
-    this.http.get<User>(environment.BANK_SERVICE_URL + 'clients/' + id).subscribe(
-
-      (v: User) => {
-        console.log(v);
-        this.userName =  of(v.username);
-      }
-    );
+      console.log(id);
+      console.log(environment.CLIENT_SERVICE_URL + 'clients/' + id);
+      this.http.get<User>(environment.CLIENT_SERVICE_URL + 'clients/' + id).subscribe(
+          (v: User) => {
+              console.log(v);
+              this.userName = of(v.username);
+          }
+      );
   }
 }

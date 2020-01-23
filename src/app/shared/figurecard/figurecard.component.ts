@@ -13,7 +13,9 @@ export class FigurecardComponent implements OnInit {
   @Input() footContent: string;
   @Input() linearColor: string;
   @Input() boxShadow: string;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

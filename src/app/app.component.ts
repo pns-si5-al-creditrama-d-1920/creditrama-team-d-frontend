@@ -13,14 +13,14 @@ export class AppComponent {
   constructor(private oauthService: OAuthService) {
     this.oauthService.oidc = false;
     // Login-Url
-    this.oauthService.tokenEndpoint = environment.AUTH_SERVER + 'oauth/token';
-      this.oauthService.requireHttps = false;
+    this.oauthService.tokenEndpoint = environment.AUTHORIZATION_SERVICE_URL + 'oauth/token';
+    this.oauthService.requireHttps = false;
 
     // Url with user info endpoint
     // This endpont is described by OIDC and provides data about the loggin user
     // This sample uses it, because we don't get an id_token when we use the password flow
     // If you don't want this lib to fetch data about the user (e. g. id, name, email) you can skip this line
-    this.oauthService.userinfoEndpoint = environment.AUTH_SERVER + 'user/me';
+    this.oauthService.userinfoEndpoint = environment.AUTHORIZATION_SERVICE_URL + 'user/me';
 
 
     // The SPA's id. Register SPA with this id at the auth-server

@@ -1,18 +1,18 @@
-header{
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.left *{
+.left * {
   color: #fff;
 }
 
-.right{
+.right {
   display: flex;
 }
 
-.right a{
+.right a {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -21,19 +21,19 @@ header{
   margin-right: 25px;
 }
 
-.right p{
+.right p {
   margin-left: 5px;
   font-size: 12px;
   line-height: normal;
   color: #fff;
 }
 
-.right i{
+.right i {
   font-size: 20px;
 }
 
-.router-active{
-  background-color: rgba(255,255,255,.1);
+.router-active {
+  background-color: rgba(255, 255, 255, .1);
   padding: 15px 18px 15px 15px;
   border-radius: 3px;
 }

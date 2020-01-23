@@ -8,7 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class MsgIconBtnComponent implements OnInit {
   @Input() number: string;
   @Input() icon: string;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,11 +1,11 @@
-.figure-card{
+.figure-card {
   display: inline-block;
   position: relative;
   width: 100%;
   margin: 25px 0;
 }
 
-.card-content{
+.card-content {
   text-align: right;
   padding: 15px 20px 13px 20px;
 }
@@ -29,11 +29,11 @@
   color: #fff;
 }
 
-.category{
+.category {
   color: #999;
 }
 
-.card-footer{
+.card-footer {
   margin: 0 20px 10px;
   padding-top: 10px;
   border-top: 1px solid #eee;

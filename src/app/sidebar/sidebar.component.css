@@ -1,4 +1,4 @@
-.logo{
+.logo {
   padding: 25px 0 20px 0;
   color: #fff;
   font-size: 18px;
@@ -6,14 +6,14 @@
   position: relative;
 }
 
-.logo img{
+.logo img {
   width: 42px;
   position: absolute;
   top: 16px;
   left: 13px;
 }
 
-.divider{
+.divider {
   content: '';
   position: relative;
   height: 1px;
@@ -22,7 +22,7 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.sidebar-wrapper{
+.sidebar-wrapper {
   overflow-y: auto;
   padding-bottom: 30px;
   width: 260px;
@@ -30,22 +30,22 @@
   height: 100%;
 }
 
-.nav-container{
+.nav-container {
   position: relative;
 }
 
-.nav{
+.nav {
   padding-top: 15px;
 }
 
-.nav li{
+.nav li {
   margin-bottom: 9px;
 }
 
-.nav li a{
+.nav li a {
   display: flex;
   align-items: center;
-  color: rgba(255,255,255,.8);
+  color: rgba(255, 255, 255, .8);
   margin: 0 15px;
   border-radius: 3px;
   -webkit-transition: all 400ms;
@@ -57,15 +57,15 @@
   text-decoration: none;
 }
 
-.nav li a:hover, .parent-active{
-  background-color: rgba(255,255,255,.1);
+.nav li a:hover, .parent-active {
+  background-color: rgba(255, 255, 255, .1);
 }
 
-.nav li a span{
+.nav li a span {
   margin-left: 20px;
 }
 
-.active a, .active a:hover{
+.active a, .active a:hover {
   /*color: rgba(0,0,0,.6) !important;*/
   /*background-color: #fff !important;*/
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(60, 72, 88, 0.4);
@@ -76,11 +76,11 @@
   transition: all 400ms;
 }
 
-.collapse-a{
+.collapse-a {
   position: relative;
 }
 
-.collapse-a .caret{
+.collapse-a .caret {
   position: absolute;
   right: 21px;
   top: 23px;
@@ -97,7 +97,7 @@
   transition: all 200ms;
 }
 
-.collapsed .caret{
+.collapsed .caret {
   position: absolute;
   right: 21px;
   top: 23px;
