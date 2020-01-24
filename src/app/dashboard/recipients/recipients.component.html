@@ -7,20 +7,21 @@
           <i class="material-icons">perm_identity</i>
         </div>
         <div class="card-content">
-          <h4 class="card-title">Manage recipients
-            <small class="category">Add new recipients</small>
+          <h4 class="card-title">Gérer les bénéficiaires
+            <small class="category">Ajouter de nouveaux bénéficiaires</small>
           </h4>
           <div class="row">
 
             <form style="width: 80%; margin-left: 5%">
               <mat-form-field style="width: 80%">
-                <input [(ngModel)]="newRecipientIban" matInput name="newRecipientIban" placeholder="Recipient bank account iban" type="string"
+                <input [(ngModel)]="newRecipientIban" matInput name="newRecipientIban"
+                       placeholder="Iban du compte en banque du bénéficiaire" type="string"
                        value=0>
               </mat-form-field>
             </form>
           </div>
           <div class="row action-btn">
-            <button (click)="updateRecipients()" class="btn btn-rose">Update Recipients</button>
+            <button (click)="updateRecipients()" class="btn btn-rose">Modifier les bénéficiaires</button>
           </div>
         </div>
       </div>
@@ -28,7 +29,7 @@
     <div class="col-md-4">
       <div class="card right-profile">
         <div class="card-content">
-          <h4>Current recipients</h4>
+          <h4>Bénéficiaires actuels</h4>
           <mat-list>
             <mat-list-item
                     *ngFor="let recipient of this.authUser.user.recipients">{{recipient.firstName + ' ' + recipient.lastName}}
