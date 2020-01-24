@@ -37,6 +37,7 @@ export class AuthService {
 	this.oauthService.fetchTokenUsingPasswordFlowAndLoadUserProfile(username, password).then(() => {
 		console.log('here');
 		this.oauthService.getIdentityClaims();
+		console.log('TEST');
 		this.router.navigate(['/dashboard']);
 	});
 
