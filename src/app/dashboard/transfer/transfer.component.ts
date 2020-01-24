@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BankAccount} from 'app/models/bank-account';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {ClientService} from 'app/services/client.service';
 import {User} from '../../models/user';
@@ -8,6 +8,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {Recipient} from '../../models/recipient';
 import {BankTransactionService} from '../../services/bank-transaction.service';
+
+declare const swal: any;
 
 @Component({
   selector: 'app-transfer',
@@ -26,7 +28,7 @@ export class TransferComponent implements OnInit {
   thirdFormGroup: FormGroup;
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private bankService: ClientService, private _formBuilder: FormBuilder,
-              private userService: UserService, private bankTransactionService: BankTransactionService) {
+              private userService: UserService, private bankTransactionService: BankTransactionService, private router: Router) {
   }
 
 
@@ -59,7 +61,19 @@ export class TransferComponent implements OnInit {
     };
 
     console.log(transaction);
-    this.bankTransactionService.makeTransaction(transaction).subscribe((response) => this.auth.getAuthUser(true));
+    this.bankTransactionService.makeTransaction(transaction).subscribe(
+      (response) => {
+        this.auth.getAuthUser(true);
+        this.router.navigate(['./dashboard']);
+      },
+      (error => {
+        swal({
+          title: 'Error',
+          text: 'Error while processing the transaction. Please retry.',
+          confirmButtonClass: 'btn btn-danger'
+        });
+        this.router.navigate(['./dashboard']);
+      }));
   }
 
 }
