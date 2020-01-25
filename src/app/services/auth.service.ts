@@ -74,5 +74,6 @@ export class AuthService {
 	this.clearCache();
 	// remove user from local storage to log user out
 	this.oauthService.logOut();
+	this.router.navigate(['/login']);
   }
 }

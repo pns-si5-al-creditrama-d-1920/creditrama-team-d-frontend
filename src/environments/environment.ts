@@ -1,11 +1,12 @@
 
 export const environment = {
   production: false,
-  AUTHORIZATION_SERVICE_URL: 'http://localhost:9191/',
-  CLIENT_SERVICE_URL: 'http://localhost:8080/',
-  TRANSACTION_SERVICE_URL: 'http://localhost:8084/',
-  NOTIFICATION_SERVICE_URL: 'http://localhost:8081/',
-  BANKACCOUNT_SERVICE_URL: 'http://localhost:8083/',
+  AUTHORIZATION_SERVICE_URL: 'http://creditrama-team-d-authorization-service-al-team-d.apps.jboss.team/',
+  CLIENT_SERVICE_URL: 'http://creditrama-team-d-client-service-al-team-d.apps.jboss.team/',
+  TRANSACTION_SERVICE_URL: 'http://creditrama-team-d-transaction-service-al-team-d.apps.jboss.team/',
+  NOTIFICATION_SERVICE_URL: '',
+  BANKACCOUNT_SERVICE_URL: 'http://creditrama-team-d-bankaccount-service-al-team-d.apps.jboss.team/',
   BASIC_USER: 'mobile',
   BASIC_PASS: 'pin',
 };
+
