@@ -12,6 +12,7 @@
       <button mat-icon-button><i class="material-icons icon-btn">dashboard</i></button>
       <app-msgiconbtn [matMenuTriggerFor]="menu" icon="notifications" number="5"></app-msgiconbtn>
       <button mat-icon-button><i class="material-icons icon-btn">person</i></button>
+      <button id="disconnect" mat-icon-button (click)="this.authService.logout()"><i class="material-icons icon-btn">exit_to_app</i></button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Mike John responded to your email</button>
         <button mat-menu-item>You have 5 new tasks</button>

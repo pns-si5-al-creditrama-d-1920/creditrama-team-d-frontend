@@ -37,6 +37,7 @@ export class AuthService {
 	this.oauthService.fetchTokenUsingPasswordFlowAndLoadUserProfile(username, password).then(() => {
 		console.log('here');
 		this.oauthService.getIdentityClaims();
+		console.log('TEST');
 		this.router.navigate(['/dashboard']);
 	});
 
@@ -73,5 +74,6 @@ export class AuthService {
 	this.clearCache();
 	// remove user from local storage to log user out
 	this.oauthService.logOut();
+	this.router.navigate(['/login']);
   }
 }
