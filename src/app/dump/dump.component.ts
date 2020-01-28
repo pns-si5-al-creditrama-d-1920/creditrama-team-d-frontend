@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {BankAccountService} from "../services/bank-account.service";
 import {BankTransactionService} from "../services/bank-transaction.service";
 import {BankAccount} from "../models/bank-account";
-import { BankTransaction } from 'app/models/bank-transaction';
+import {BankTransaction} from 'app/models/bank-transaction';
 
 @Component({
   selector: 'app-dump',
@@ -13,6 +13,9 @@ import { BankTransaction } from 'app/models/bank-transaction';
   styleUrls: ['./dump.component.css']
 })
 export class DumpComponent implements OnInit {
+  currentErrorState: boolean;
+  checked: boolean;
+  disabled: boolean;
   displayedColumns: string[] = [
     'userId',
     'username',
@@ -36,10 +39,14 @@ export class DumpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.transactionService.getTransactionErrors().subscribe((currentState: boolean) => {
+      this.checked = currentState;
+    });
+    this.disabled = false;
     this.clientService.dump().subscribe((clientsReturned: User[]) => {
-      console.table(clientsReturned);
+      //console.table(clientsReturned);
       this.bankAccountService.dump().subscribe((bankAccounts: BankAccount[]) => {
-        console.table(bankAccounts);
+        //console.table(bankAccounts);
 
         clientsReturned.forEach((clients, i) => {
           const ba = clients.bankAccounts.slice().map(b => b.toString());
@@ -51,16 +58,20 @@ export class DumpComponent implements OnInit {
           });
         });
 
-        console.table(clientsReturned);
+        //console.table(clientsReturned);
         this.clients = clientsReturned;
       });
 
-      this.transactionService.dump().subscribe((transactions : BankTransaction[])=> {
+      this.transactionService.dump().subscribe((transactions: BankTransaction[]) => {
         this.transactions = new MatTableDataSource<BankTransaction>(transactions);
       });
 
       this.clients = clientsReturned;
       this.dataSource = new MatTableDataSource<User>(this.clients);
     });
+  }
+
+  setErrorState() {
+    this.transactionService.setTransactionErrors(this.currentErrorState).subscribe(result => console.log(result));
   }
 }

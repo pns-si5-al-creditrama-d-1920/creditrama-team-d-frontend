@@ -30,4 +30,17 @@ export class BankTransactionService {
   dump(): Observable<any> {
     return this.http.get(environment.TRANSACTION_SERVICE_URL + 'dump');
   }
+
+  setTransactionErrors(state: boolean) {
+    return this.http.post(environment.TRANSACTION_SERVICE_URL + 'writeerror',
+      JSON.stringify(state),
+      {
+        headers: {'Content-type': 'application/json'}
+      }
+    );
+  }
+
+  getTransactionErrors() {
+    return this.http.get(environment.TRANSACTION_SERVICE_URL + 'writeerror');
+  }
 }
