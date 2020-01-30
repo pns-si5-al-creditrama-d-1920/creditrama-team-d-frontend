@@ -11,6 +11,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
+import {MatSliderModule} from '@angular/material/slider';
 
 import {AppComponent} from './app.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
@@ -97,7 +98,8 @@ import {AngularIbanModule} from 'angular-iban';
     MatListModule,
     MatStepperModule,
     MatSlideToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatSliderModule
   ],
   providers: [SettingsService, {
     provide: HTTP_INTERCEPTORS,

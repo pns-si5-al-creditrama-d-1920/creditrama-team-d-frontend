@@ -5,12 +5,24 @@
       <mat-slide-toggle
         (change)="setErrorState()"
         [(ngModel)]="currentErrorState"
-        [checked]="checked"
+        [checked]="currentErrorState"
         [disabled]="disabled"
         class="errors-margin">
+        : Off/On
       </mat-slide-toggle>
+      <mat-slider
+        (change)="setErrorRate()"
+        [(ngModel)]="errorRate"
+        [disabled]=!currentErrorState aria-label="Error rate" class="slider"
+        max="100"
+        min="0"
+        step="1"
+        thumbLabel>
+      </mat-slider>
+      <p>{{errorRate}}%</p>
     </section>
   </mat-card-content>
+
 </mat-card>
 <br/>
 <div class="mat-elevation-z8">

@@ -14,7 +14,7 @@ import {BankTransaction} from 'app/models/bank-transaction';
 })
 export class DumpComponent implements OnInit {
   currentErrorState: boolean;
-  checked: boolean;
+  errorRate: number;
   disabled: boolean;
   displayedColumns: string[] = [
     'userId',
@@ -40,8 +40,13 @@ export class DumpComponent implements OnInit {
 
   ngOnInit() {
     this.transactionService.getTransactionErrors().subscribe((currentState: boolean) => {
-      this.checked = currentState;
+      this.currentErrorState = currentState;
     });
+    this.transactionService.getErrorRate().subscribe((currentErrorRate: number) => {
+      this.errorRate = currentErrorRate;
+      console.log(currentErrorRate);
+      console.log(this.errorRate);
+    })
     this.disabled = false;
     this.clientService.dump().subscribe((clientsReturned: User[]) => {
       //console.table(clientsReturned);
@@ -73,5 +78,9 @@ export class DumpComponent implements OnInit {
 
   setErrorState() {
     this.transactionService.setTransactionErrors(this.currentErrorState).subscribe(result => console.log(result));
+  }
+
+  setErrorRate() {
+    this.transactionService.setErrorRate(this.errorRate).subscribe(result => console.log(result));
   }
 }

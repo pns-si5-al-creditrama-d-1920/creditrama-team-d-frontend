@@ -43,4 +43,17 @@ export class BankTransactionService {
   getTransactionErrors() {
     return this.http.get(environment.TRANSACTION_SERVICE_URL + 'writeerror');
   }
+
+  getErrorRate() {
+    return this.http.get(environment.TRANSACTION_SERVICE_URL + 'errorrate');
+  }
+
+  setErrorRate(newErrorRate: number) {
+    return this.http.post(environment.TRANSACTION_SERVICE_URL + 'errorrate',
+      JSON.stringify(newErrorRate),
+      {
+        headers: {'Content-type': 'application/json'}
+      }
+    );
+  }
 }
