@@ -27,15 +27,19 @@ export class BankTransactionService {
     return this.http.post(environment.TRANSACTION_SERVICE_URL + 'transactions', transaction);
   }
 
+  confirmCode(uuid: string, code: number) {
+    return this.http.patch(`${environment.TRANSACTION_SERVICE_URL}transactions/${uuid}/code?code=${code}`, null);
+  }
+
   dump(): Observable<any> {
     return this.http.get(environment.TRANSACTION_SERVICE_URL + 'dump');
   }
 
   setTransactionErrors(state: boolean) {
     return this.http.post(environment.TRANSACTION_SERVICE_URL + 'writeerror',
-      JSON.stringify(state),
-      {
-        headers: {'Content-type': 'application/json'}
+        JSON.stringify(state),
+        {
+          headers: {'Content-type': 'application/json'}
       }
     );
   }

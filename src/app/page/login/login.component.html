@@ -16,7 +16,8 @@
             <div class="form-row">
               <i class="material-icons">lock_outline</i>
               <mat-form-field color="accent">
-                <input [(ngModel)]='password' matInput placeholder="Password" type="password"/>
+                <input (keyup.enter)="loginBtn()" [(ngModel)]='password' matInput placeholder="Password"
+                       type="password"/>
               </mat-form-field>
             </div>
           </div>

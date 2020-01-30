@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {Recipient} from '../../models/recipient';
 import {BankTransactionService} from '../../services/bank-transaction.service';
+import {BankTransactionResponse} from "../../models/bank-transaction-response";
 
 declare const swal: any;
 
@@ -62,10 +63,41 @@ export class TransferComponent implements OnInit {
 
     console.log(transaction);
     this.bankTransactionService.makeTransaction(transaction).subscribe(
-      (response) => {
-        this.auth.getAuthUser(true);
-        this.router.navigate(['./dashboard']);
-      },
+        (transactionResponse: BankTransactionResponse) => {
+          this.auth.getAuthUser(true);
+          if (!transactionResponse.code) {
+            this.router.navigate(['./dashboard']);
+          } else {
+            swal({
+              title: 'Confirmation du code',
+              input: 'text',
+              inputAttributes: {
+                autocapitalize: 'off'
+              },
+              showCancelButton: false,
+              confirmButtonText: 'Confirmer',
+              showLoaderOnConfirm: true,
+              preConfirm: (code) => {
+                console.log(code);
+                this.bankTransactionService.confirmCode(transactionResponse.uuid, code).subscribe(
+                    (response) => {
+                      if (response) {
+                        this.router.navigate(['./dashboard']);
+                        swal({
+                          title: 'Success',
+                          text: 'Transaction acceptée !',
+                          confirmButtonClass: 'btn btn-success'
+                        });
+                      }
+                    },
+                    (error) => {
+                      console.error(error);
+                    });
+              },
+              allowOutsideClick: () => !swal.isLoading()
+            });
+          }
+        },
       (error => {
         swal({
           title: 'Error',
