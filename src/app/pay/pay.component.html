@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="container">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                <div class="card">
+                    <h4>Paiement par carte</h4>
+                    <div class="card-form">
+                        <div class="form-row">
+                            <i class="material-icons">lock</i>
+                            <mat-form-field color="accent">
+                                <input [(ngModel)]='cardNumber' matInput placeholder="Numéro de carte" type="text"/>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-row">
+                            <i class="material-icons">person</i>
+                            <mat-form-field color="accent">
+                                <input [(ngModel)]='owner' matInput placeholder="Nom sur la carte" type="text"/>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-row">
+                            <i class="material-icons">info</i>
+                            <mat-form-field color="accent">
+                                <input [(ngModel)]='cvc' matInput placeholder="CVC" type="text"/>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button (click)="onPay()" mat-button>PAYER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

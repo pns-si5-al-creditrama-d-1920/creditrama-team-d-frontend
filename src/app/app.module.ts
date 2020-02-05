@@ -49,6 +49,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule, MatSelectModule} from '@angular/material';
 import {UserService} from './services/user.service';
 import {AngularIbanModule} from 'angular-iban';
+import {PayComponent} from './pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {AngularIbanModule} from 'angular-iban';
     RecipientsComponent,
     TransferComponent,
     NavbarComponent,
-    DumpComponent
+    DumpComponent,
+    PayComponent
   ],
   imports: [
     BrowserModule,

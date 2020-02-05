@@ -1,27 +1,28 @@
 /**
  * Created by wangdi on 26/5/17.
  */
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './dashboard/home/home.component';
-import { ProfileComponent } from './dashboard/profile/profile.component';
-import { TableComponent } from './dashboard/table/table.component';
-import { NotificationComponent } from './dashboard/notification/notification.component';
-import { SweetAlertComponent } from './dashboard/sweetalert/sweetalert.component';
-import { SettingsComponent } from './dashboard/settings/settings.component';
-import { PriceTableComponent } from './dashboard/component/pricetable/pricetable.component';
-import { PanelsComponent } from './dashboard/component/panels/panels.component';
-import { WizardComponent } from './dashboard/component/wizard/wizard.component';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './dashboard/home/home.component';
+import {ProfileComponent} from './dashboard/profile/profile.component';
+import {TableComponent} from './dashboard/table/table.component';
+import {NotificationComponent} from './dashboard/notification/notification.component';
+import {SweetAlertComponent} from './dashboard/sweetalert/sweetalert.component';
+import {SettingsComponent} from './dashboard/settings/settings.component';
+import {PriceTableComponent} from './dashboard/component/pricetable/pricetable.component';
+import {PanelsComponent} from './dashboard/component/panels/panels.component';
+import {WizardComponent} from './dashboard/component/wizard/wizard.component';
 
-import { RootComponent } from './dashboard/root/root.component';
-import { LoginComponent } from './page/login/login.component';
-import { LockComponent } from './page/lock/lock.component';
-import { RegisterComponent } from './page/register/register.component';
-import { AuthGuardService } from './guards/auth.guard';
-import { LoginGuard } from './guards/login.guard';
-import { UserInfoResolver } from './resolvers/userinfo.resolver';
-import { RecipientsComponent } from './dashboard/recipients/recipients.component';
-import { TransferComponent } from './dashboard/transfer/transfer.component';
-import { DumpComponent } from './dump/dump.component';
+import {RootComponent} from './dashboard/root/root.component';
+import {LoginComponent} from './page/login/login.component';
+import {LockComponent} from './page/lock/lock.component';
+import {RegisterComponent} from './page/register/register.component';
+import {AuthGuardService} from './guards/auth.guard';
+import {LoginGuard} from './guards/login.guard';
+import {UserInfoResolver} from './resolvers/userinfo.resolver';
+import {RecipientsComponent} from './dashboard/recipients/recipients.component';
+import {TransferComponent} from './dashboard/transfer/transfer.component';
+import {DumpComponent} from './dump/dump.component';
+import {PayComponent} from "./pay/pay.component";
 
 const routes: Routes = [
 	{
@@ -29,10 +30,11 @@ const routes: Routes = [
 		redirectTo: 'dashboard',
 		pathMatch: 'full'
 	},
-	{ path: 'login', component: LoginComponent, canActivate: [ LoginGuard ] },
-	{ path: 'lock', component: LockComponent },
-	{ path: 'register', component: RegisterComponent },
-	{ path: 'dump', component: DumpComponent },
+	{path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+	{path: 'lock', component: LockComponent},
+	{path: 'register', component: RegisterComponent},
+	{path: 'dump', component: DumpComponent},
+	{path: 'pay', component: PayComponent},
 	{
 		path: 'dashboard',
 		component: RootComponent,
