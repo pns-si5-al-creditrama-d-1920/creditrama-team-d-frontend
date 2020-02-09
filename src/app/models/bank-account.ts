@@ -4,5 +4,5 @@ export interface BankAccount {
   iban: string;
   bankCode: string;
   client: number;
-  creditors: string[];
+  cards: number[];
 }
