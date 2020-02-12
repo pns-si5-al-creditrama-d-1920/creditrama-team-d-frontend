@@ -23,7 +23,9 @@
       </app-figurecard>
     </div>
   </div>
-  <div class="row" style="margin-top: 10px">
+  <app-history [transactions]="this.authUser.transactions"></app-history>
+ <!-- 
+   <div class="row" style="margin-top: 10px">
     <div class="col-md-4 col-sm-12 col-xs-12">
       <app-imagecard
         *ngIf="this.authUser"
@@ -35,4 +37,5 @@
       </app-imagecard>
     </div>
   </div>
+  -->
 </div>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {AuthUser} from '../../models/auth-user';
+import { HistoryComponent } from './../history/history.component';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
 	this.route.data.subscribe((data) =>
 		this.auth.getAuthUser().subscribe((v) => {
 		console.log(v);
-		this.authUser = v;
+    this.authUser = v;
 		this.totalBalance = v.bankAccounts.map(nb => nb.balance).reduce((a, b) => a + b, 0);
 		if (this.authUser.transactions.length !== 0) {
 			this.authUser.transactions.sort((a, b) => (a.createdTransaction.getTime() > b.createdTransaction.getTime()) ? 1 : -1);
