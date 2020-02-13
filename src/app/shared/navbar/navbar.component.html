@@ -4,25 +4,8 @@
     <h4>{{ title }}</h4>
   </div>
   <div class="right-part">
-    <div class="right-part" id="nav-right">
-      <mat-form-field color="#ff0000">
-        <input matInput placeholder="Search" type="search">
-      </mat-form-field>
-      <button class="search-btn" mat-mini-fab><i class="material-icons" style="font-size:18px;">search</i></button>
-      <button mat-icon-button><i class="material-icons icon-btn">dashboard</i></button>
-      <app-msgiconbtn [matMenuTriggerFor]="menu" icon="notifications" number="5"></app-msgiconbtn>
-      <button mat-icon-button><i class="material-icons icon-btn">person</i></button>
-      <button id="disconnect" mat-icon-button (click)="this.authService.logout()"><i class="material-icons icon-btn">exit_to_app</i></button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Mike John responded to your email</button>
-        <button mat-menu-item>You have 5 new tasks</button>
-        <button mat-menu-item>You're now friend with Andrew</button>
-        <button mat-menu-item>Another Notification</button>
-        <button mat-menu-item>Another One</button>
-      </mat-menu>
-    </div>
     <div id="menu">
-      <button (click)="menuClick()" mat-icon-button><i class="material-icons">menu</i></button>
+      <button (click)="menuClick()" mat-icon-button><i class="material-icons">menu</i>Déconnexion</button>
     </div>
   </div>
 </div>

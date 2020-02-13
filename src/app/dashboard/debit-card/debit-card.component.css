@@ -1,0 +1,352 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: linear-gradient(45deg, #66ddff 0%, #ba64fc 100%);
+    width: 100vw;
+    height: 100vh;
+}
+
+.flip-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    margin: auto;
+    width: 370px;
+    height: 215px;
+    border-radius: 10px;
+}
+
+.sd-card {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+}
+
+.sd-card-front {
+    position: absolute;
+    width: 370px;
+    height: 215px;
+    background: linear-gradient(45deg, #00b9fc 0%, #8c00ff 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow: 0 0 20px 0 #999;
+}
+
+.sd-card-front img {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 20px;
+}
+
+.sd-card-front p {
+    position: absolute;
+    left: 23px;
+    top: 90px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.sd-card-front p span {
+    margin: 7px;
+}
+
+.sd-card-front h4 {
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.date-main {
+    position: absolute;
+    right: 20px;
+    bottom: 23px;
+    width: 70px;
+    height: 36px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-main h3 {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+/*********************************************************/
+
+
+.sd-card-back {
+    position: absolute;
+    width: 370px;
+    height: 215px;
+    background: linear-gradient(45deg, #00b9fc 0%, #8c00ff 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    transform: rotateY(180deg);
+}
+
+.line-black {
+    position: absolute;
+    top: 25px;
+    width: 100vw;
+    height: 50px;
+    background: #111;
+}
+
+.sd-card-back h6 {
+    position: absolute;
+    right: 40px;
+    top: 95px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.ccv {
+    position: absolute;
+    top: 110px;
+    width: 90%;
+    height: 35px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.sd-card-back .ccv h5 {
+    left: -10px;
+    font-size: 17px;
+}
+
+.sd-card-back img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    bottom: 0;
+}
+
+/************************************************/
+
+.from-main {
+    position: absolute;
+    width: 425px;
+    height: 400px;
+    background: #fff;
+    left: 0;
+    right: 0;
+    top: 120px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+form {
+    position: absolute;
+    width: 425px;
+    height: 290px;
+    bottom: 0;
+    margin: -15px 0;
+}
+
+form div {
+    width: 100%;
+    height: 60px;
+}
+
+h5 {
+    position: relative;
+    left: 48px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.input-number, .input-holder {
+    position: relative;
+    width: 425px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.input-number input {
+    position: relative;
+    width: 75px;
+    height: 30px;
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: inset 0 0 4px 0 #555;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-indent: 0.7em;
+}
+
+.input-holder input {
+    position: relative;
+    width: 330px;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: inset 0 0 4px 0 #555;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-indent: 0.7em;
+}
+
+#put-namber::-webkit-inner-spin-button {
+    display: none;
+}
+
+.date-section {
+    position: absolute;
+    width: 175px;
+    height: 53px;
+    left: 40px;
+}
+
+.date-section h5 {
+    position: relative;
+    left: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.input-date {
+    position: relative;
+    width: 175px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.input-date input {
+    position: relative;
+    width: 75px;
+    height: 30px;
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: inset 0 0 4px 0 #555;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-indent: 0.7em;
+}
+
+.input-date input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.ccv-section {
+    position: absolute;
+    width: 85px;
+    height: 53px;
+    right: 43px;
+}
+
+.ccv-section h5 {
+    position: relative;
+    left: -5px;
+    text-align: right;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #000;
+}
+
+.input-ccv {
+    position: relative;
+    width: 85px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.input-ccv input {
+    position: relative;
+    width: 75px;
+    height: 30px;
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: inset 0 0 4px 0 #555;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-indent: 0.7em;
+    right: 0;
+}
+
+.button-submit {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+}
+
+.submit {
+    position: relative;
+    width: 330px;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background: #4c50ff;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+    overflow: hidden;
+    letter-spacing: 4px;
+}
+
+.submit:hover {
+    background: #6100ff;
+}
