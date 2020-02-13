@@ -8,21 +8,21 @@
           <h4>Login</h4>
           <div class="card-form">
             <div class="form-row">
-              <i class="material-icons">email</i>
+              <i class="material-icons">perm_identity</i>
               <mat-form-field color="accent">
-                <input [(ngModel)]='username' matInput placeholder="Email address" type="text"/>
+                <input [(ngModel)]='username' matInput placeholder="Pseudonyme" type="text"/>
               </mat-form-field>
             </div>
             <div class="form-row">
               <i class="material-icons">lock_outline</i>
               <mat-form-field color="accent">
-                <input (keyup.enter)="loginBtn()" [(ngModel)]='password' matInput placeholder="Password"
+                <input (keyup.enter)="loginBtn()" [(ngModel)]='password' matInput placeholder="Mot de passe"
                        type="password"/>
               </mat-form-field>
             </div>
           </div>
           <div class="card-footer">
-            <button (click)="loginBtn()" mat-button>VALIDER</button>
+            <button (click)="loginBtn()" mat-button>Se connecter</button>
           </div>
         </div>
       </div>

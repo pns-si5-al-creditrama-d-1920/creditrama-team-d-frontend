@@ -1,5 +1,5 @@
 <div class="container">
-  <app-navbar title="Transfer"></app-navbar>
+  <app-navbar title="Virement"></app-navbar>
   <div class="row" style="margin-top: 30px">
     <div class="col-md-12">
       <div class="card">
@@ -7,14 +7,14 @@
           <i class="material-icons">attach_money</i>
         </div>
         <div class="card-content">
-          <h4 class="card-title">New transfer</h4>
+          <h4 class="card-title">Faire un virement</h4>
 
           <mat-horizontal-stepper #stepper [linear]=true>
             <mat-step [stepControl]="firstFormGroup">
               <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Choissisez votre compte en banque</ng-template>
+                <ng-template matStepLabel>Choissisez votre compte émetteur</ng-template>
                 <mat-form-field>
-                  <mat-label>Quel est le compte a débiter ?</mat-label>
+                  <mat-label>Compte émetteur</mat-label>
                   <mat-select [(value)]="selectedAccount" formControlName="sourceId" required>
                     <mat-option *ngFor="let account of myAccounts" [value]="account.iban">
                       {{account.iban}} - {{account.balance}}€
@@ -22,7 +22,7 @@
                   </mat-select>
                 </mat-form-field>
                 <div>
-                  <button mat-button matStepperNext>Next</button>
+                  <button mat-button matStepperNext>Suivant</button>
                 </div>
               </form>
             </mat-step>
@@ -30,7 +30,7 @@
               <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Choissisez le compte bénéficiaire</ng-template>
                 <mat-form-field>
-                  <mat-label>Quel est le compte a créditer ?</mat-label>
+                  <mat-label>Compte à créditer</mat-label>
                   <mat-select [(value)]="selectedRecipient" formControlName="destinationId" required>
                     <mat-option *ngFor="let recp of myRecipients" [value]="recp.iban">
                       {{  recp.firstName + ' ' + recp.lastName + ' - ' + ((recp.iban.length > 10) ? (recp.iban | slice:0:10) + '...' : recp.iban)}}
@@ -38,19 +38,19 @@
                   </mat-select>
                 </mat-form-field>
                 <div>
-                  <button mat-button matStepperNext>Next</button>
+                  <button mat-button matStepperNext>Suivant</button>
                 </div>
               </form>
             </mat-step>
 
             <mat-step [stepControl]="thirdFormGroup">
               <form [formGroup]="thirdFormGroup">
-                <ng-template matStepLabel>Somme</ng-template>
+                <ng-template matStepLabel>Montant</ng-template>
                 <mat-form-field>
                   <input formControlName="amount" matInput placeholder="Montant" required type="number" value=0>
                 </mat-form-field>
                 <div>
-                  <button mat-button matStepperNext>Next</button>
+                  <button mat-button matStepperNext>Suivant</button>
                 </div>
               </form>
             </mat-step>
@@ -59,8 +59,8 @@
               <ng-template matStepLabel>Récapitulatif</ng-template>
               <h3> Montant : {{this.thirdFormGroup.getRawValue().amount}}</h3>
               <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button (click)="transfer()" class="btn btn-rose" mat-button>Finish</button>
+                <button mat-button matStepperPrevious>Précédent</button>
+                <button (click)="transfer()" class="btn btn-rose" mat-button>Valider le virement</button>
               </div>
             </mat-step>
           </mat-horizontal-stepper>
