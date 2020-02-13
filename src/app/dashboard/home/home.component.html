@@ -23,7 +23,8 @@
       </app-figurecard>
     </div>
   </div>
-  <app-history [transactions]="this.authUser.transactions"></app-history>
+  <app-history [transactions]="this.pendingTransactions" [pending]="true"></app-history>
+  <app-history [transactions]="this.authUser.transactions" [pending]="false"></app-history>
  <!-- 
    <div class="row" style="margin-top: 10px">
     <div class="col-md-4 col-sm-12 col-xs-12">

@@ -1,5 +1,6 @@
+<h4 *ngIf="pending">Pending transactions:</h4>
+<h4 *ngIf="!pending">Transactions history:</h4>
 <div *ngIf="transactions.length > 0;else no_transaction">
-    <h4>Transactions history:</h4>
     <div class="mat-elevation-z8" >
         <table [dataSource]="dataSourceTransactions" mat-table>
             <ng-container matColumnDef="amount">
@@ -26,12 +27,36 @@
                 <th *matHeaderCellDef mat-header-cell> Transaction state</th>
                 <td *matCellDef="let element" mat-cell> {{element.transactionState}} </td>
             </ng-container>
-    
-            <tr *matHeaderRowDef="transactionColumns" mat-header-row></tr>
-            <tr *matRowDef="let row; columns: transactionColumns;" mat-row></tr>
+
+            <ng-container *ngIf="pending">
+                <ng-container matColumnDef="validationCode"> 
+                    <th *matHeaderCellDef mat-header-cell>Verification code</th>
+                    <td *matCellDef="let element" mat-cell> 
+                        <mat-form-field>
+                            <input matInput placeholder="Enter code" type="number">
+                        </mat-form-field> 
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="button">    
+                    <th *matHeaderCellDef mat-header-cell> Validation button</th>
+                    <td *matCellDef="let element" mat-cell> <button></button> </td>
+                </ng-container>
+            </ng-container>
+            
+            <ng-container *ngIf="pending; else history">
+                <tr *matHeaderRowDef="pendingColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: pendingColumns;" mat-row></tr>
+            </ng-container>
+
+            <ng-template #history>
+                <tr *matHeaderRowDef="historyColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: historyColumns;" mat-row></tr>
+            </ng-template>
         </table>
     </div>
 </div>
 <ng-template #no_transaction>
     <h4>No transaction yet.</h4>
+    <br/>
 </ng-template>

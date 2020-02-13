@@ -65,7 +65,8 @@ export class TransferComponent implements OnInit {
     this.bankTransactionService.makeTransaction(transaction).subscribe(
         (transactionResponse: BankTransactionResponse) => {
           this.auth.getAuthUser(true);
-          if (!transactionResponse.code) {
+          this.router.navigate(['./dashboard']);
+          /*if (!transactionResponse.code) {
             this.router.navigate(['./dashboard']);
           } else {
             swal({
@@ -96,7 +97,7 @@ export class TransferComponent implements OnInit {
               },
               allowOutsideClick: () => !swal.isLoading()
             });
-          }
+          }*/
         },
       (error => {
         swal({
