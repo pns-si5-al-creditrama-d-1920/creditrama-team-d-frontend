@@ -33,9 +33,10 @@ export class DebitCardComponent implements OnInit {
     this.owner = owner;
     this.expiryMonth = DebitCardComponent.displayTwoDigits(date.getMonth() + 1);
     this.expiryYear = DebitCardComponent.displayTwoDigits(date.getFullYear());
+    this.cardNumberHTML = "";
 
     for (let i = 0; i < 4; i++) {
-      this.cardNumberHTML += "<span>" + number.toString().slice(i, i + 4) + "</span>";
+      this.cardNumberHTML += "<span>" + number.toString().slice(i, i + 4) + " </span>";
     }
   }
 }

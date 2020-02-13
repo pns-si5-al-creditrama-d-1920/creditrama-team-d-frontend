@@ -350,3 +350,7 @@ h5 {
 .submit:hover {
     background: #6100ff;
 }
+
+.cardOwner {
+    margin-bottom: 15px;
+}
