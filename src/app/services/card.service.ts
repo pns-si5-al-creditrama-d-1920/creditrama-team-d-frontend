@@ -16,6 +16,10 @@ export class CardService {
     return this.http.get<Card>(environment.CARD_SERVICE_URL + 'cards/' + cardNumber);
   }
 
+  getCards(userId: number): Observable<Card[]> {
+    return this.http.get<Card[]>(environment.CARD_SERVICE_URL + 'clients/' + userId + '/cards');
+  }
+
   // TODO
   /*dump(): Observable<any> {
     return this.http.get(environment.CARD_SERVICE_URL + 'dump');
