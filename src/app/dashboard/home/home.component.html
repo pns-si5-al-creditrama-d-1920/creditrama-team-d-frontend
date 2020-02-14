@@ -23,9 +23,13 @@
             </app-figurecard>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <app-debit-card [card]="authUser.cards[0]"></app-debit-card>
+            <app-debit-card *ngIf="authUser" [card]="authUser.cards[0]"></app-debit-card>
         </div>
     </div>
-  <app-history [transactions]="this.pendingTransactions" [pending]="true"></app-history>
-  <app-history [transactions]="this.authUser.transactions" [pending]="false"></app-history>
+    <div class="margin-top">
+        <app-history [pending]="true" [transactions]="this.pendingTransactions"></app-history>
+    </div>
+    <div class="margin-top">
+        <app-history *ngIf="authUser" [pending]="false" [transactions]="this.authUser.transactions"></app-history>
+    </div>
 </div>

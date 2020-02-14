@@ -7,43 +7,45 @@
                 <th *matHeaderCellDef mat-header-cell>Montant</th>
                 <td *matCellDef="let element" mat-cell> {{element.amount}} </td>
             </ng-container>
-    
+
             <ng-container matColumnDef="createdTransaction">
                 <th *matHeaderCellDef mat-header-cell>Date et heure (UTC)</th>
                 <td *matCellDef="let element" mat-cell> {{element.createdTransaction | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
             </ng-container>
-    
+
             <ng-container matColumnDef="source">
                 <th *matHeaderCellDef mat-header-cell>Iban source</th>
                 <td *matCellDef="let element" mat-cell> {{element.source.iban}} </td>
             </ng-container>
-    
+
             <ng-container matColumnDef="dest">
                 <th *matHeaderCellDef mat-header-cell>Iban destination</th>
                 <td *matCellDef="let element" mat-cell> {{element.dest.iban}} </td>
             </ng-container>
-    
+
             <ng-container matColumnDef="transactionState">
                 <th *matHeaderCellDef mat-header-cell>Etat de la transaction</th>
                 <td *matCellDef="let element" mat-cell> {{element.transactionState}} </td>
             </ng-container>
 
             <ng-container *ngIf="pending">
-                <ng-container matColumnDef="validationCode"> 
+                <ng-container matColumnDef="validationCode">
                     <th *matHeaderCellDef mat-header-cell>Code de verification</th>
-                    <td *matCellDef="let element; let i=index" mat-cell> 
+                    <td *matCellDef="let element; let i=index" mat-cell>
                         <mat-form-field>
-                            <input matInput placeholder="Enter code" type="number" [(ngModel)]="codes[i]" >
-                        </mat-form-field> 
+                            <input [(ngModel)]="this.codes[i]" matInput placeholder="Enter code" type="number">
+                        </mat-form-field>
                     </td>
                 </ng-container>
 
-                <ng-container matColumnDef="button">    
+                <ng-container matColumnDef="button">
                     <th *matHeaderCellDef mat-header-cell>Bouton de validation</th>
-                    <td *matCellDef="let element; let i=index" mat-cell> <button onclick="transfer(i)">Confirm</button> </td>
+                    <td *matCellDef="let element; let i=index" mat-cell>
+                        <button (click)="this.transfer(i)">Confirm</button>
+                    </td>
                 </ng-container>
             </ng-container>
-            
+
             <ng-container *ngIf="pending; else history">
                 <tr *matHeaderRowDef="pendingColumns" mat-header-row></tr>
                 <tr *matRowDef="let row; columns: pendingColumns;" mat-row></tr>
