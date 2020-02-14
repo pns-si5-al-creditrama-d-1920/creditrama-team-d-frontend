@@ -50,7 +50,8 @@ import {MatListModule, MatSelectModule} from '@angular/material';
 import {UserService} from './services/user.service';
 import {AngularIbanModule} from 'angular-iban';
 import {PayComponent} from './pay/pay.component';
-import { HistoryComponent } from './dashboard/history/history.component';
+import {HistoryComponent} from './dashboard/history/history.component';
+import {DebitCardComponent} from './dashboard/debit-card/debit-card.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { HistoryComponent } from './dashboard/history/history.component';
     NavbarComponent,
     DumpComponent,
     PayComponent,
-    HistoryComponent
+    HistoryComponent,
+    DebitCardComponent
   ],
   imports: [
     BrowserModule,

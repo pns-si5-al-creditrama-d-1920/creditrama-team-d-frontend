@@ -4,8 +4,9 @@
     <h4>{{ title }}</h4>
   </div>
   <div class="right-part">
-    <div id="menu">
-      <button (click)="menuClick()" mat-icon-button><i class="material-icons">menu</i>Déconnexion</button>
+    <div class="right-part" id="nav-right">
+      <button (click)="this.authService.logout()" id="disconnect" mat-icon-button><i class="material-icons icon-btn">exit_to_app</i>
+      </button>
     </div>
   </div>
 </div>

@@ -51,15 +51,8 @@ export class AuthService {
           mergeMap((u: any) => {
             console.log('USER : ', u);
             return forkJoin(this.bankAccount.getAccountsById(u.userId), this.bankAccount.getRecipientsByIbans(u.userId),
-                this.transactionService.getTransactionsById(u.userId))
-                .pipe(map(([first, second, third]) => {
-                  let cards = [];
-                  first.forEach(account => {
-                    account.cards.forEach(card => {
-                      cards.push(this.cardService.getCard(card));
-                    });
-                  });
-                  console.log(cards);
+                this.transactionService.getTransactionsById(u.userId), this.cardService.getCards(u.userId))
+                .pipe(map(([first, second, third, cards]) => {
                   return {
                     user: u as User,
                     bankAccounts: first,

@@ -1,33 +1,31 @@
 <div class="container">
-  <app-navbar title="Tableau de bord"></app-navbar>
-  <h3 *ngIf="this.authUser">Bienvenue {{this.authUser.user.username || ""}}</h3>
-  <div class="row" style="margin-top: 30px">
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <app-figurecard
-        *ngIf="this.authUser"
-        boxShadow="0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4)"
-        category="Solde"
-        footContent="Numéro de compte : {{this.authUser.bankAccounts[0].iban}}"
-        headerIcon="money"
-        linearColor="linear-gradient(60deg, #ffa726, #fb8c00)"
-        title="{{totalBalance}}€">
-      </app-figurecard>
+    <app-navbar title="Tableau de bord"></app-navbar>
+    <h3 *ngIf="this.authUser">Bienvenue {{this.authUser.user.username || ""}}</h3>
+    <div class="row" style="margin-top: 30px">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <app-figurecard
+                    *ngIf="this.authUser"
+                    boxShadow="0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4)"
+                    category="Solde"
+                    footContent="Numéro de compte : {{this.authUser.bankAccounts[0].iban}}"
+                    headerIcon="money"
+                    linearColor="linear-gradient(60deg, #ffa726, #fb8c00)"
+                    title="{{totalBalance}}€">
+            </app-figurecard>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <app-figurecard
+                    boxShadow="0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4)"
+                    category="Dernière transaction réussie"
+                    headerIcon="equalizer"
+                    linearColor="linear-gradient(60deg, #ef5350, #e53935)"
+                    title="{{lastTransaction}}">
+            </app-figurecard>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <app-debit-card [card]="authUser.cards[0]"></app-debit-card>
+        </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <app-figurecard
-              boxShadow="0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4)"
-              category="Dernière transaction réussie"
-              headerIcon="equalizer"
-              linearColor="linear-gradient(60deg, #ef5350, #e53935)"
-              title="{{lastTransaction}}">
-      </app-figurecard>
-    </div>
-  </div>
-  <!--
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <app-debit-card [card]="authUser.cards[0]"></app-debit-card>
-  </div>
-  -->
   <app-history [transactions]="this.pendingTransactions" [pending]="true"></app-history>
   <app-history [transactions]="this.authUser.transactions" [pending]="false"></app-history>
 </div>

@@ -13,9 +13,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   public activeFontColor: string;
   public normalFontColor: string;
   public dividerBgColor: string;
-  public allowedRoutes = [{path: '/dashboard', title: 'Dashboard', icon: 'dashboard', children: null},
-    {path: 'recipients', title: 'Recipients', icon: 'contacts', children: null},
-    {path: 'transfer', title: 'Transfer', icon: 'swap_horiz', children: null}];
+  public allowedRoutes = [{path: '/dashboard', title: 'Tableau de bord', icon: 'dashboard', children: null},
+    {path: 'recipients', title: 'Bénéficiaires', icon: 'contacts', children: null},
+    {path: 'transfer', title: 'Faire un virement', icon: 'swap_horiz', children: null}];
 
   constructor(public settingsService: SettingsService) {
     const routes = ROUTES;
