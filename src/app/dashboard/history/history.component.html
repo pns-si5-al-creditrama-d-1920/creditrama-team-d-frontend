@@ -1,46 +1,46 @@
-<h4 *ngIf="pending">Pending transactions:</h4>
-<h4 *ngIf="!pending">Transactions history:</h4>
+<h4 *ngIf="pending">Transactions en attente :</h4>
+<h4 *ngIf="!pending">Historique des transactions :</h4>
 <div *ngIf="transactions.length > 0;else no_transaction">
     <div class="mat-elevation-z8" >
         <table [dataSource]="dataSourceTransactions" mat-table>
             <ng-container matColumnDef="amount">
-                <th *matHeaderCellDef mat-header-cell> Amount</th>
+                <th *matHeaderCellDef mat-header-cell>Montant</th>
                 <td *matCellDef="let element" mat-cell> {{element.amount}} </td>
             </ng-container>
     
             <ng-container matColumnDef="createdTransaction">
-                <th *matHeaderCellDef mat-header-cell>Time (UTC)</th>
+                <th *matHeaderCellDef mat-header-cell>Date et heure (UTC)</th>
                 <td *matCellDef="let element" mat-cell> {{element.createdTransaction | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
             </ng-container>
     
             <ng-container matColumnDef="source">
-                <th *matHeaderCellDef mat-header-cell>Source Iban</th>
+                <th *matHeaderCellDef mat-header-cell>Iban source</th>
                 <td *matCellDef="let element" mat-cell> {{element.source.iban}} </td>
             </ng-container>
     
             <ng-container matColumnDef="dest">
-                <th *matHeaderCellDef mat-header-cell>Destination Iban</th>
+                <th *matHeaderCellDef mat-header-cell>Iban destination</th>
                 <td *matCellDef="let element" mat-cell> {{element.dest.iban}} </td>
             </ng-container>
     
             <ng-container matColumnDef="transactionState">
-                <th *matHeaderCellDef mat-header-cell> Transaction state</th>
+                <th *matHeaderCellDef mat-header-cell>Etat de la transaction</th>
                 <td *matCellDef="let element" mat-cell> {{element.transactionState}} </td>
             </ng-container>
 
             <ng-container *ngIf="pending">
                 <ng-container matColumnDef="validationCode"> 
-                    <th *matHeaderCellDef mat-header-cell>Verification code</th>
-                    <td *matCellDef="let element" mat-cell> 
+                    <th *matHeaderCellDef mat-header-cell>Code de verification</th>
+                    <td *matCellDef="let element; let i=index" mat-cell> 
                         <mat-form-field>
-                            <input matInput placeholder="Enter code" type="number">
+                            <input matInput placeholder="Enter code" type="number" [(ngModel)]="codes[i]" >
                         </mat-form-field> 
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="button">    
-                    <th *matHeaderCellDef mat-header-cell> Validation button</th>
-                    <td *matCellDef="let element" mat-cell> <button></button> </td>
+                    <th *matHeaderCellDef mat-header-cell>Bouton de validation</th>
+                    <td *matCellDef="let element; let i=index" mat-cell> <button onclick="transfer(i)">Confirm</button> </td>
                 </ng-container>
             </ng-container>
             
@@ -57,6 +57,6 @@
     </div>
 </div>
 <ng-template #no_transaction>
-    <h4>No transaction yet.</h4>
+    <h4>Aucune transaction.</h4>
     <br/>
 </ng-template>
