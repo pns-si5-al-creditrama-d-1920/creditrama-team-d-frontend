@@ -101,10 +101,12 @@
     <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
     <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
   </table>
+  <mat-paginator #usersPaginator [length]="this.clients.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
+
 <br/>
 <div class="mat-elevation-z8">
-  <table [dataSource]="transactions" mat-table>
+  <table [dataSource]="transactionsTable" mat-table>
 
     <ng-container matColumnDef="uuid">
       <th *matHeaderCellDef mat-header-cell>Transaction uuid</th>
@@ -135,68 +137,9 @@
       <th *matHeaderCellDef mat-header-cell>Destination Iban</th>
       <td *matCellDef="let element" mat-cell> {{element.dest.iban}} </td>
     </ng-container>
-<!--
-    <ng-container matColumnDef="bankAccount">
-      <th *matHeaderCellDef mat-header-cell> Bank accounts</th>
-      <td *matCellDef="let element" mat-cell>
-        <span *ngFor="let bankaccount of element.bankAccounts">
-					{{bankaccount.iban}} <br/>
-					<mat-divider></mat-divider>
-				</span>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="bankAccount.balance">
-      <th *matHeaderCellDef mat-header-cell> Bank account balances</th>
-      <td *matCellDef="let element" mat-cell>
-        <span *ngFor="let bankaccount of element.bankAccounts">
-					{{bankaccount.balance}} <br/>
-					<mat-divider></mat-divider>
-				</span>
-      </td>
-    </ng-container>
-
-      <ng-container matColumnDef="recipient">
-          <th *matHeaderCellDef mat-header-cell> Recipients</th>
-          <td *matCellDef="let element" mat-cell>
-          <span *ngFor="let recipient of element.recipients">
-					{{recipient.iban}} - {{recipient.firstName}} <br/>
-					<mat-divider></mat-divider>
-				</span>
-          </td>
-      </ng-container>
-
-    <ng-container matColumnDef="bankAccount.sourceId">
-      <th *matHeaderCellDef mat-header-cell> Transaction source</th>
-      <td *matCellDef="let element" mat-cell>
-				<span *ngFor="let transac of element.bankTransactions">
-					{{transac.sourceId}} <br/>
-					<mat-divider></mat-divider>
-				</span>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="bankAccount.destinationId">
-      <th *matHeaderCellDef mat-header-cell> Transaction destination</th>
-      <td *matCellDef="let element" mat-cell>
-				<span *ngFor="let transac of element.bankTransactions">
-					{{transac.destinationId}} <br/>
-					<mat-divider></mat-divider>
-				</span>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="bankAccount.amount">
-      <th *matHeaderCellDef mat-header-cell> Transaction amount</th>
-      <td *matCellDef="let element" mat-cell>
-				<span *ngFor="let transac of element.bankTransactions">
-					{{transac.amount}} <br/>
-					<mat-divider></mat-divider>
-				</span>
-      </td>
-    </ng-container>-->
 
     <tr *matHeaderRowDef="transactionColumns" mat-header-row></tr>
     <tr *matRowDef="let row; columns: transactionColumns;" mat-row></tr>
   </table>
+  <mat-paginator #transactionsPaginator [length]="this.transactions.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>

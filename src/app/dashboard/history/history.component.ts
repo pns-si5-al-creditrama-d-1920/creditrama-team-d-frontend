@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {BankTransaction} from 'app/models/bank-transaction';
 import {BankTransactionService} from '../../services/bank-transaction.service';
 import {BankTransactionResponse} from "../../models/bank-transaction-response";
+import {MatPaginator} from '@angular/material';
 
 
 @Component({
@@ -13,6 +14,8 @@ import {BankTransactionResponse} from "../../models/bank-transaction-response";
 export class HistoryComponent implements OnInit {
   @Input() transactions: BankTransaction[];
   @Input() pending: boolean;
+
+  @ViewChild('transactionsPaginator', {static: false}) paginator: MatPaginator;
 
   dataSourceTransactions = new MatTableDataSource<BankTransaction>();
 
@@ -40,6 +43,11 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions);
+    
+  }
+
+  ngAfterViewInit() {
+    this.dataSourceTransactions.paginator = this.paginator;
   }
 
   transfer(index) {

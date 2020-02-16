@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from 'app/models/user';
 import {ClientService} from 'app/services/client.service';
 import {MatTableDataSource} from '@angular/material/table';
@@ -6,6 +6,7 @@ import {BankAccountService} from "../services/bank-account.service";
 import {BankTransactionService} from "../services/bank-transaction.service";
 import {BankAccount} from "../models/bank-account";
 import {BankTransaction} from 'app/models/bank-transaction';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-dump',
@@ -13,6 +14,8 @@ import {BankTransaction} from 'app/models/bank-transaction';
   styleUrls: ['./dump.component.css']
 })
 export class DumpComponent implements OnInit {
+  @ViewChild('usersPaginator', {static: false}) paginator: MatPaginator;
+  @ViewChild('transactionsPaginator', {static: false}) paginator2: MatPaginator;
   currentErrorState: boolean;
   errorRate: number;
   disabled: boolean;
@@ -33,12 +36,15 @@ export class DumpComponent implements OnInit {
   ];
   clients: User[];
   dataSource = new MatTableDataSource<User>();
-  transactions = new MatTableDataSource<BankTransaction>();
+  transactionsTable = new MatTableDataSource<BankTransaction>();
+  transactions: BankTransaction[];
 
   constructor(private clientService: ClientService, private bankAccountService: BankAccountService, private transactionService: BankTransactionService) {
   }
 
   ngOnInit() {
+    this.transactions = [];
+    this.clients = [];
     this.transactionService.getTransactionErrors().subscribe((currentState: boolean) => {
       this.currentErrorState = currentState;
     });
@@ -65,14 +71,15 @@ export class DumpComponent implements OnInit {
 
         //console.table(clientsReturned);
         this.clients = clientsReturned;
+        this.dataSource = new MatTableDataSource<User>(clientsReturned);
+        this.dataSource.paginator = this.paginator;
       });
 
       this.transactionService.dump().subscribe((transactions: BankTransaction[]) => {
-        this.transactions = new MatTableDataSource<BankTransaction>(transactions);
+        this.transactionsTable = new MatTableDataSource<BankTransaction>(transactions);
+        this.transactions = transactions;
+        this.transactionsTable.paginator = this.paginator2;
       });
-
-      this.clients = clientsReturned;
-      this.dataSource = new MatTableDataSource<User>(this.clients);
     });
   }
 

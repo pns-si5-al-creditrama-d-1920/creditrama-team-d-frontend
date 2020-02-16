@@ -52,6 +52,7 @@ import {AngularIbanModule} from 'angular-iban';
 import {PayComponent} from './pay/pay.component';
 import {HistoryComponent} from './dashboard/history/history.component';
 import {DebitCardComponent} from './dashboard/debit-card/debit-card.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import {DebitCardComponent} from './dashboard/debit-card/debit-card.component';
     MatStepperModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule
   ],
   providers: [SettingsService, {
     provide: HTTP_INTERCEPTORS,
