@@ -107,7 +107,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSlideToggleModule,
     MatCardModule,
     MatSliderModule,
-    MatIconModule
+    MatIconModule,
     MatPaginatorModule
   ],
   providers: [SettingsService, {
