@@ -25,9 +25,18 @@
 
             <ng-container matColumnDef="transactionState">
                 <th *matHeaderCellDef mat-header-cell>Etat de la transaction</th>
-                <td *matCellDef="let element" mat-cell> {{element.transactionState}} </td>
+              <td *matCellDef="let element" mat-cell>
+                <ng-container *ngIf="element.transactionState === 'ACCEPTED'">
+                <mat-icon class="text-success">check_circle</mat-icon>
+               </ng-container>
+                <ng-container *ngIf="element.transactionState === 'PENDING'">
+                  <mat-icon class="text-info">acess_time</mat-icon>
+                </ng-container>
+                <ng-container *ngIf="element.transactionState === 'CANCEL'">
+                  <mat-icon class="text-danger">close</mat-icon>
+                </ng-container>
+              </td>
             </ng-container>
-
             <ng-container *ngIf="pending">
                 <ng-container matColumnDef="validationCode">
                     <th *matHeaderCellDef mat-header-cell>Code de verification</th>

@@ -46,7 +46,7 @@ import {TransferComponent} from './dashboard/transfer/transfer.component';
 import {DumpComponent} from './dump/dump.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule, MatSelectModule} from '@angular/material';
+import {MatIconModule, MatListModule, MatSelectModule} from '@angular/material';
 import {UserService} from './services/user.service';
 import {AngularIbanModule} from 'angular-iban';
 import {PayComponent} from './pay/pay.component';
@@ -107,6 +107,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSlideToggleModule,
     MatCardModule,
     MatSliderModule,
+    MatIconModule
     MatPaginatorModule
   ],
   providers: [SettingsService, {
