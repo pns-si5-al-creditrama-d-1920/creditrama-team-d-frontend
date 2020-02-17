@@ -42,7 +42,7 @@
                     <th *matHeaderCellDef mat-header-cell>Code de verification</th>
                     <td *matCellDef="let element; let i=index" mat-cell>
                         <mat-form-field>
-                            <input [(ngModel)]="this.codes[i]" matInput placeholder="Enter code" type="number">
+                            <input [(ngModel)]="element.code" matInput placeholder="Enter code" type="number">
                         </mat-form-field>
                     </td>
                 </ng-container>
@@ -50,7 +50,7 @@
                 <ng-container matColumnDef="button">
                     <th *matHeaderCellDef mat-header-cell>Bouton de validation</th>
                     <td *matCellDef="let element; let i=index" mat-cell>
-                        <button (click)="this.transfer(i)">Confirm</button>
+                        <button (click)="this.transfer(element)">Confirm</button>
                     </td>
                 </ng-container>
             </ng-container>

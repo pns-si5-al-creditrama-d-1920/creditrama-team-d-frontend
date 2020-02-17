@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {BankTransaction} from 'app/models/bank-transaction';
 import {BankTransactionService} from '../../services/bank-transaction.service';
-import {BankTransactionResponse} from "../../models/bank-transaction-response";
+import {BankTransactionResponse} from '../../models/bank-transaction-response';
 import {MatPaginator} from '@angular/material';
 
 
@@ -39,23 +39,25 @@ export class HistoryComponent implements OnInit {
 
   codes: number[];
 
-  constructor(private bankTransactionService: BankTransactionService) { }
+  constructor(private bankTransactionService: BankTransactionService) {
+  }
 
   ngOnInit() {
     this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions);
-    
+
   }
 
   ngAfterViewInit() {
     this.dataSourceTransactions.paginator = this.paginator;
   }
 
-  transfer(index) {
-    this.bankTransactionService.confirmCode(this.transactions[index].uuid, this.codes[index]).subscribe(
-        (response) => {
+  transfer(element) {
+    console.log(element);
+    this.bankTransactionService.confirmCode(element.uuid, element.code).subscribe(
+     (response) => {
           console.log(response);
         },
-        (error) => {
+     (error) => {
           console.error(error);
         });
   }
