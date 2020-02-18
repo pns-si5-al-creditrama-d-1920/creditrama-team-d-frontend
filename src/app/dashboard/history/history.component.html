@@ -24,13 +24,13 @@
             </ng-container>
 
             <ng-container matColumnDef="transactionState">
-                <th *matHeaderCellDef mat-header-cell>Etat de la transaction</th>
+                <th *matHeaderCellDef mat-header-cell>État de la transaction</th>
               <td *matCellDef="let element" mat-cell>
                 <ng-container *ngIf="element.transactionState === 'ACCEPTED'">
                 <mat-icon class="text-success">check_circle</mat-icon>
                </ng-container>
                 <ng-container *ngIf="element.transactionState === 'PENDING'">
-                  <mat-icon class="text-info">acess_time</mat-icon>
+                    <mat-icon class="text-info">access_time</mat-icon>
                 </ng-container>
                 <ng-container *ngIf="element.transactionState === 'CANCEL'">
                   <mat-icon class="text-danger">close</mat-icon>
@@ -39,7 +39,7 @@
             </ng-container>
             <ng-container *ngIf="pending">
                 <ng-container matColumnDef="validationCode">
-                    <th *matHeaderCellDef mat-header-cell>Code de verification</th>
+                    <th *matHeaderCellDef mat-header-cell>Code de vérification</th>
                     <td *matCellDef="let element; let i=index" mat-cell>
                         <mat-form-field>
                             <input [(ngModel)]="element.code" matInput placeholder="Enter code" type="number">
@@ -50,7 +50,7 @@
                 <ng-container matColumnDef="button">
                     <th *matHeaderCellDef mat-header-cell>Bouton de validation</th>
                     <td *matCellDef="let element; let i=index" mat-cell>
-                        <button (click)="this.transfer(element)">Confirm</button>
+                        <button (click)="this.transfer(element)" class="btn btn-info">Valider</button>
                     </td>
                 </ng-container>
             </ng-container>

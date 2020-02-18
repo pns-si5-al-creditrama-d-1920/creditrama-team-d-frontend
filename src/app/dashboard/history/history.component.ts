@@ -2,9 +2,9 @@ import {Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core'
 import {MatTableDataSource} from '@angular/material/table';
 import {BankTransaction} from 'app/models/bank-transaction';
 import {BankTransactionService} from '../../services/bank-transaction.service';
-import {BankTransactionResponse} from '../../models/bank-transaction-response';
 import {MatPaginator} from '@angular/material';
 
+declare const swal: any;
 
 @Component({
   selector: 'app-history',
@@ -43,10 +43,10 @@ export class HistoryComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.transactions.sort(((a, b) => {
-      return this.compare(a.createdTransaction.getTime(), b.createdTransaction.getTime(), false);
-    }));
-	this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions);
+	this.transactions.sort(((a, b) => {
+		return this.compare(a.createdTransaction.getTime(), b.createdTransaction.getTime(), false);
+	}));
+	   this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions);
 
   }
 
@@ -56,12 +56,28 @@ export class HistoryComponent implements OnInit, AfterViewInit {
 
   transfer(element) {
 	console.log(element);
+	if (!element.code) {
+		return;
+	}
 	this.bankTransactionService.confirmCode(element.uuid, element.code).subscribe(
 		(response) => {
 			console.log(response);
+			if (response === 'OK') {
+			window.location.reload();
+			} else if (response === 'EXPECTATION_FAILED') {
+			swal({
+				title: 'Erreur de confirmation',
+				text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
+			});
+			element.code = '';
+			}
 		},
 		(error) => {
 			console.error(error);
+			swal({
+			title: 'Erreur de confirmation',
+			text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
+			});
 		});
   }
  compare(a: number | string, b: number | string, isAsc: boolean) {
