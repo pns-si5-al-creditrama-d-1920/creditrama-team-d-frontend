@@ -1,10 +1,10 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {BankTransaction} from 'app/models/bank-transaction';
 import {BankTransactionService} from '../../services/bank-transaction.service';
-import {BankTransactionResponse} from '../../models/bank-transaction-response';
 import {MatPaginator} from '@angular/material';
 
+declare const swal: any;
 
 @Component({
   selector: 'app-history',
@@ -53,12 +53,28 @@ export class HistoryComponent implements OnInit {
 
   transfer(element) {
     console.log(element);
+    if (!element.code) {
+      return;
+    }
     this.bankTransactionService.confirmCode(element.uuid, element.code).subscribe(
-     (response) => {
+        (response) => {
           console.log(response);
+          if (response === "OK") {
+            window.location.reload();
+          } else if (response === "EXPECTATION_FAILED") {
+            swal({
+              title: 'Erreur de confirmation',
+              text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
+            });
+            element.code = "";
+          }
         },
-     (error) => {
+        (error) => {
           console.error(error);
+          swal({
+            title: 'Erreur de confirmation',
+            text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
+          });
         });
   }
 }

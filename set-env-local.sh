@@ -1,4 +1,6 @@
-
+#!/bin/sh
+> ./src/environments/environment.ts
+echo "
 export const environment = {
   production: false,
   AUTHORIZATION_SERVICE_URL: 'http://creditrama-team-d-authorization-service-al-team-d.apps.jboss.team/',
@@ -8,5 +10,4 @@ export const environment = {
   CARD_SERVICE_URL: 'http://creditrama-team-d-card-service-al-team-d.apps.jboss.team/',
   BASIC_USER: 'mobile',
   BASIC_PASS: 'pin',
-};
-
+};" >> ./src/environments/environment.ts
