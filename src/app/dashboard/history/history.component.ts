@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {BankTransaction} from 'app/models/bank-transaction';
 import {BankTransactionService} from '../../services/bank-transaction.service';
@@ -11,7 +11,7 @@ import {MatPaginator} from '@angular/material';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, AfterViewInit {
   @Input() transactions: BankTransaction[];
   @Input() pending: boolean;
 
@@ -20,21 +20,21 @@ export class HistoryComponent implements OnInit {
   dataSourceTransactions = new MatTableDataSource<BankTransaction>();
 
   historyColumns: string[] = [
-    'source',
-    'dest',
-    'amount',
-    'createdTransaction',
-    'transactionState'
+	'source',
+	'dest',
+	'amount',
+	'createdTransaction',
+	'transactionState'
   ];
 
   pendingColumns: string[] = [
-    'source',
-    'dest',
-    'amount',
-    'createdTransaction',
-    'transactionState',
-    'validationCode',
-    'button'
+	'source',
+	'dest',
+	'amount',
+	'createdTransaction',
+	'transactionState',
+	'validationCode',
+	'button'
   ];
 
   codes: number[];
@@ -43,22 +43,28 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions);
+    this.transactions.sort(((a, b) => {
+      return this.compare(a.createdTransaction.getTime(), b.createdTransaction.getTime(), false);
+    }));
+	this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions);
 
   }
 
   ngAfterViewInit() {
-    this.dataSourceTransactions.paginator = this.paginator;
+	this.dataSourceTransactions.paginator = this.paginator;
   }
 
   transfer(element) {
-    console.log(element);
-    this.bankTransactionService.confirmCode(element.uuid, element.code).subscribe(
-     (response) => {
-          console.log(response);
-        },
-     (error) => {
-          console.error(error);
-        });
+	console.log(element);
+	this.bankTransactionService.confirmCode(element.uuid, element.code).subscribe(
+		(response) => {
+			console.log(response);
+		},
+		(error) => {
+			console.error(error);
+		});
+  }
+ compare(a: number | string, b: number | string, isAsc: boolean) {
+	return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }
