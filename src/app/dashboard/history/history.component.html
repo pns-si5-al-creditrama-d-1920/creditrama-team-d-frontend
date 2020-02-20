@@ -3,6 +3,11 @@
 <div *ngIf="transactions.length > 0;else no_transaction">
     <div class="mat-elevation-z8" >
         <table [dataSource]="dataSourceTransactions" mat-table>
+            <ng-container matColumnDef="transactionId">
+                <th *matHeaderCellDef mat-header-cell>Id</th>
+                <td *matCellDef="let element" mat-cell> {{element.transactionId}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="amount">
                 <th *matHeaderCellDef mat-header-cell>Montant</th>
                 <td *matCellDef="let element" mat-cell> {{element.amount}} </td>
@@ -10,7 +15,8 @@
 
             <ng-container matColumnDef="createdTransaction">
                 <th *matHeaderCellDef mat-header-cell>Date et heure (UTC)</th>
-                <td *matCellDef="let element" mat-cell> {{element.createdTransaction | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
+                <td *matCellDef="let element"
+                    mat-cell> {{element.createdTransaction | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="source">

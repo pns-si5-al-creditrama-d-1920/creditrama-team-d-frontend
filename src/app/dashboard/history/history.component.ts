@@ -20,6 +20,7 @@ export class HistoryComponent implements OnInit {
   dataSourceTransactions = new MatTableDataSource<BankTransaction>();
 
   historyColumns: string[] = [
+    'transactionId',
     'source',
     'dest',
     'amount',
@@ -28,6 +29,7 @@ export class HistoryComponent implements OnInit {
   ];
 
   pendingColumns: string[] = [
+    'transactionId',
     'source',
     'dest',
     'amount',
@@ -43,8 +45,12 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions);
-
+    let counter = 1;
+    this.dataSourceTransactions = new MatTableDataSource<BankTransaction>(this.transactions.map((transaction: any) => {
+      transaction.transactionId = counter;
+      counter++;
+      return transaction;
+    }));
   }
 
   ngAfterViewInit() {
