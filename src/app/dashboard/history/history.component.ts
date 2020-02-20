@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {BankTransaction} from 'app/models/bank-transaction';
 import {BankTransactionService} from '../../services/bank-transaction.service';
@@ -11,7 +11,7 @@ declare const swal: any;
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, AfterViewInit {
   @Input() transactions: BankTransaction[];
   @Input() pending: boolean;
 
@@ -54,33 +54,33 @@ export class HistoryComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSourceTransactions.paginator = this.paginator;
+	this.dataSourceTransactions.paginator = this.paginator;
   }
 
   transfer(element) {
-    console.log(element);
-    if (!element.code) {
-      return;
-    }
-    this.bankTransactionService.confirmCode(element.uuid, element.code).subscribe(
-        (response) => {
-          console.log(response);
-          if (response === "OK") {
-            window.location.reload();
-          } else if (response === "EXPECTATION_FAILED") {
-            swal({
-              title: 'Erreur de confirmation',
-              text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
-            });
-            element.code = "";
-          }
-        },
-        (error) => {
-          console.error(error);
-          swal({
-            title: 'Erreur de confirmation',
-            text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
-          });
-        });
+	console.log(element);
+	if (!element.code) {
+		return;
+	}
+	this.bankTransactionService.confirmCode(element.uuid, element.code).subscribe(
+		(response) => {
+			console.log(response);
+			if (response === 'OK') {
+			window.location.reload();
+			} else if (response === 'EXPECTATION_FAILED') {
+			swal({
+				title: 'Erreur de confirmation',
+				text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
+			});
+			element.code = '';
+			}
+		},
+		(error) => {
+			console.error(error);
+			swal({
+			title: 'Erreur de confirmation',
+			text: 'Un problème est survenu lors de la confirmation, veuillez réessayer',
+			});
+		});
   }
 }
